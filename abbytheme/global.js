@@ -19,41 +19,6 @@ var video_formats={
 	ogv: { extension: "ogv", type: "video/ogg"}
 };
 
-function drawtext(){
-	var screen_width = $(window).width();
-	
-	// set font size based on actual resolution, normalized at 14px/22px for 720
-	var fontsize = Math.floor(14*(screen_width/1280));
-	var lineheight = Math.floor(22*(screen_width/1280));
-	
-	if(fontsize < 11){
-		fontsize = 11;
-	}
-	
-	if(lineheight < 14){
-		lineheight = 14;
-	}
-	
-	$('body').css('font-size',fontsize+'px');
-	$('body').css('line-height',lineheight+'px');
-	
-	// polygon boundary feature
-	$('.slide').each(function(){
-		var polygon = $(this).data('polygon');
-		
-		if(polygon && $.isArray(polygon) && polygon.length >= 3){
-			fillpolygon($(this).find('.content').eq(0),polygon);
-		}
-	});
-}
-
-function redrawtext(){
-	$('.slide .polygon').remove();
-	$('.slide .content').show();
-	
-	drawtext();
-}
-
 $(document).ready(function(){
 
 	// set slide heights to prevent reflow
@@ -63,74 +28,7 @@ $(document).ready(function(){
 	
 	resourcepath = $('body').data('respath');
 	
-	// detect resolution
-	var saved_width = $.cookie('resolution');
-	var screen_width = $(window).width();
-	
-	drawtext();
-	
-	// build resolution selector
-	$.each(String($('body').data('resolution')).split(" "),function(i, v){
-		if(v){
-			resolution.push(parseInt(v));
-		}
-	});
-	
-	resolution.sort(function(a, b){return b-a;});
-	
-	var selector = '';
-	$.each(resolution, function(i, v){
-		// use 16:9 XXXp conventions for labels. eg. 1080p, 1440p etc
-		var label;
-		
-		if(i == resolution.length-1 && v <= 1024){
-			label = 'mobile';
-		}
-		else if(v == 3840){
-			label = '4K';
-		}
-		else{
-			var h = parseInt((9/16)*v);
-			label = h+'p';
-		}
-		
-		selector += '<li data-res="'+v+'"><a href="#">'+label+'</a></li>';
-	});
-	
-	selector = '<ul>'+selector+'</ul>';
-	
-	$('#resolution').append(selector);
-		
-	// resolution select
-	
-	$('#resolution ul li').click(function(){
-		var new_resolution = $(this).data('res');
-		
-		if(current_resolution != new_resolution){
-			current_resolution = new_resolution;
-			// update all urls
-			$('.slide').each(function(index){
-				var set_res = current_resolution;
-				if(parseInt($(this).data('imagewidth')) < current_resolution){
-					set_res = parseInt($(this).data('imagewidth'));
-				}
-				var url = resourcepath + $(this).find('img.image').data('url');
-				$(this).find('img.image').not('.blank').prop('src',url+'/'+set_res+'.jpg');
-			});
-			
-			// set ui
-			$('#resolution li.active').removeClass('active');
-			$(this).addClass('active');
-			
-			$.cookie('resolution', current_resolution,  { expires: 7, path: '/' });
-		}
-		
-		$('#resbutton .restext').text($(this).find('a').text());
-		
-		$('#resolution').removeClass('active');
-		return false;
-	});
-	
+
 	// click away from dialog
 	$('body').click(function(e) {
 	    if (!$(e.target).is('#resolution')) {
@@ -140,85 +38,8 @@ $(document).ready(function(){
 	        $('#share').removeClass('active');
 	    }
 	});
-  	
-	if(saved_width){
-		// used cookie value if set
-		$('#resolution li').each(function(i){
-			var val = parseInt($(this).data('res'));
-			if(saved_width == val){
-				$(this).trigger('click');
-				$(this).addClass('active');
-				return false;
-			}
-		});
-	}
-	else{
-		// assume large->small order
-		var found = false;
-		var sidebar_width = $('#marker').width() + $('#sidebar').width();
-		// account for pixel density and sidebar width
-		var device_ratio = window.devicePixelRatio ? window.devicePixelRatio : 1;
-		var adjusted_screen_width = ($(window).width() - sidebar_width) * device_ratio;
-		function setResolution(res){
-			$(res).trigger('click');
-			$(res).addClass('active');
-			found=true;
-		}
-		$('#resolution li').each(function(i){
-			var val = parseInt($(this).data('res'));
-			var image_density = val / adjusted_screen_width;
-			if(image_density >= 0.9) {
-				setResolution(this);
-			}
-		});
-
-	// when largest image has density lower than threashold (large screen in use)
-	if(!found){
-		$('#resolution li').first().trigger('click');
-	}
-
-	}
-		
+  			
 	scrollcheck();
-	
-	// add back hover behavior erased by color changes
-	$('#sidebar a, #share a, #resolution a').not('#nav .active a').mouseenter(function(){
-		var color = $(this).css('color');
-		$(this).css('color','#ffffff');
-		$(this).data('prevcolor',color);
-	}).mouseleave(function(){
-		var color = $(this).data('prevcolor');
-		if(color){
-			$(this).css('color',color);
-		}
-	});
-	
-	// browser detect
-	if($.browser.webkit){
-		$('.icon').addClass('webkit');
-	}
-	
-	$('#sharebutton').click(function(){
-		if($('#share').hasClass('active')){
-			$('#share').removeClass('active');
-		}
-		else{
-			$('#share').addClass('active');
-		}
-		$('#resolution').removeClass('active');
-		return false;
-	});
-	
-	$('#resbutton').click(function(){
-		if($('#resolution').hasClass('active')){
-			$('#resolution').removeClass('active');
-		}
-		else{
-			$('#resolution').addClass('active');
-		}
-		$('#share').removeClass('active');
-		return false;
-	});
 
 	// download current
 	$('#download').click(function(){
@@ -241,20 +62,6 @@ $(document).ready(function(){
 		}
 		
 		return false;
-	});
-	
-	// add marker
-	var mheight = 100/$('.slide').length;
-	$('.slide').each(function(i, v){
-		var color1 = $(this).data('color1');
-		var color7 = $(this).data('color7');
-		if(!color1){
-			color1 = '#000';
-		}
-		if(!color7){
-			color7 = '#fff';
-		}
-		$('#marker').append('<li style="background-color: '+color1+'; height: '+mheight+'%"><a href="#'+(i+1)+'" style="background-color: '+color7+'"></a></li>');
 	});
 	
 });
@@ -340,31 +147,6 @@ function scrollcheck(){
 
 		$(current_slide).nextAll().filter('.slide').slice(0,5).find('img.image').addClass('active');
 		$(current_slide).prevAll().filter('.slide').slice(0,2).find('img.image').addClass('active');
-		
-		// set custom colors
-		var sidebackground = $(current_slide).data('color2');
-		if(sidebackground){
-			$('#sidebar .background').css('background-color',sidebackground);
-		}
-		
-		var resbackground = $(current_slide).data('color3');
-		if(resbackground){
-			$('#resolution').css('background-color',resbackground);
-		}
-		
-		var sharebackground = $(current_slide).data('color4');
-		if(sharebackground){
-			$('#share').css('background-color',sharebackground);
-		}
-		
-		var highcolor = $(current_slide).data('textcolor');
-		var sidecolor = $(current_slide).data('color6');
-		if(sidecolor){
-			$('#sidebar, #sidebar a, #share a, #resolution a').css('color',sidecolor);
-			$('#sidebar .active a, #resolution .active a').css('color',highcolor).css('border-color', highcolor);
-		}
-		
-		$('#sidebar .icon.webkit, #share .icon.webkit').css('background-color',sidecolor);
 				
 		// highlight nav
 		
