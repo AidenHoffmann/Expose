@@ -50,7 +50,7 @@ z-index: 10;
 transition: color 1s;
 font-size: 14px;
 }
-.cs-toggle {
+#navigation .cs-toggle {
 	width: clamp(2.75rem, 6vw, 3rem);
     height: clamp(2.75rem, 6vw, 3rem);
     margin: 0 0 0 auto;
@@ -674,7 +674,7 @@ min-width: 1px;
 		flex-direction: column;
 		row-gap: 15px;
 	}
-	.cs-toggle {
+	#navigation .cs-toggle {
 		display: none;
 	}
 }
