@@ -19,7 +19,7 @@ var video_formats={
 	ogv: { extension: "ogv", type: "video/ogg"}
 };
 
-const fullPage = document.querySelector('#fullpage');
+const fullPage = document.getElementById('#fullpage');
 
 $(document).ready(function(){
 
