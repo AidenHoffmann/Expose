@@ -19,6 +19,7 @@ var video_formats={
 	ogv: { extension: "ogv", type: "video/ogg"}
 };
 
+
 function drawtext(){
 	var screen_width = $(window).width();
 	
@@ -54,13 +55,21 @@ function redrawtext(){
 	drawtext();
 }
 
+const fullPage = document.getElementById('fullpage');
+
+function hideImage() {
+	fullPage.classList.remove("active");
+	fullPage.style.display = 'none';
+}
+
 $(document).ready(function(){
-	const fullPage = document.getElementById('fullpage');
+	
 	// set slide heights to prevent reflow
 	$('.slide').each(function(){
 		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%');
 		$('.slide').find('img').click(function() {
 			fullPage.style.background = "url("+$(this).attr('src')+")";
+			fullPage.style.display = 'block';
 		})
 	});
 	
