@@ -55,10 +55,11 @@ function redrawtext(){
 }
 
 $(document).ready(function(){
-
+	const fullPage = document.querySelector('#fullpage');
 	// set slide heights to prevent reflow
 	$('.slide').each(function(){
 		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%');
+		fullPage.css("background","url("+$(this).attr('src')+")");
 	});
 	
 	resourcepath = $('body').data('respath');

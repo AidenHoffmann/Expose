@@ -139,8 +139,8 @@ clear: both;
 
 #control{
 	position: absolute;
-	bottom: 40px;
-	left: 15px;
+	top: 35px;
+	right: 17px;
 	z-index: 20;
 	list-style: none;
 	margin: 0;
@@ -627,7 +627,19 @@ display: inline-block;
 height: 10px;
 min-width: 1px;
 }
-
+#fullpage {
+	display: none;
+	position: absolute;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-size: contain;
+	background-repeat: no-repeat no-repeat;
+	background-position: center center;
+	background-color: black;
+  }
 @media (min-width:768px) {
 	#sidebar{
 		width: 293px;
@@ -640,5 +652,11 @@ min-width: 1px;
 	}
 	html,body{
 		font: 300 18px/22px 'Lato',helvetica, arial, sans-serif;
-		}
+	}
+	#control {
+		bottom: 40px;
+		left: 15px;
+		top: auto;
+		right: auto;
+	}
 }
