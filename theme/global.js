@@ -19,21 +19,55 @@ var video_formats={
 	ogv: { extension: "ogv", type: "video/ogg"}
 };
 
-const fullPage = document.getElementById('fullpage');
+function drawtext(){
+	var screen_width = $(window).width();
+	
+	// set font size based on actual resolution, normalized at 14px/22px for 720
+	var fontsize = Math.floor(14*(screen_width/1280));
+	var lineheight = Math.floor(22*(screen_width/1280));
+	
+	if(fontsize < 11){
+		fontsize = 11;
+	}
+	
+	if(lineheight < 14){
+		lineheight = 14;
+	}
+	
+	$('body').css('font-size',fontsize+'px');
+	$('body').css('line-height',lineheight+'px');
+	
+	// polygon boundary feature
+	$('.slide').each(function(){
+		var polygon = $(this).data('polygon');
+		
+		if(polygon && $.isArray(polygon) && polygon.length >= 3){
+			fillpolygon($(this).find('.content').eq(0),polygon);
+		}
+	});
+}
+
+function redrawtext(){
+	$('.slide .polygon').remove();
+	$('.slide .content').show();
+	
+	drawtext();
+}
 
 $(document).ready(function(){
 
 	// set slide heights to prevent reflow
 	$('.slide').each(function(){
-		$(this).css('padding-top', (100 * $(this).data('imageheight') / $(this).data('imagewidth')) + '%');
-		$(this).click(function() {
-			fullPage.style.backgroundImage = 'url(' + $(this).find('img').attr('src') + ')';
-			fullPage.style.display = 'block';
-		});
+		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%');
 	});
 	
 	resourcepath = $('body').data('respath');
 	
+	// detect resolution
+	var saved_width = $.cookie('resolution');
+	var screen_width = $(window).width();
+	
+	drawtext();
 
 	// click away from dialog
 	$('body').click(function(e) {
@@ -44,8 +78,92 @@ $(document).ready(function(){
 	        $('#share').removeClass('active');
 	    }
 	});
-  			
+  	
+	if(saved_width){
+		// used cookie value if set
+		$('#resolution li').each(function(i){
+			var val = parseInt($(this).data('res'));
+			if(saved_width == val){
+				$(this).trigger('click');
+				$(this).addClass('active');
+				return false;
+			}
+		});
+	}
+	else{
+		// assume large->small order
+		var found = false;
+		var sidebar_width = $('#marker').width() + $('#sidebar').width();
+		// account for pixel density and sidebar width
+		var device_ratio = window.devicePixelRatio ? window.devicePixelRatio : 1;
+		var adjusted_screen_width = ($(window).width() - sidebar_width) * device_ratio;
+		function setResolution(res){
+			$(res).trigger('click');
+			$(res).addClass('active');
+			found=true;
+		}
+		$('#resolution li').each(function(i){
+			var val = parseInt($(this).data('res'));
+			var image_density = val / adjusted_screen_width;
+			if(image_density >= 0.9) {
+				setResolution(this);
+			}
+		});
+
+	// when largest image has density lower than threashold (large screen in use)
+	if(!found){
+		$('#resolution li').first().trigger('click');
+	}
+
+	}
+		
 	scrollcheck();
+	
+	// add back hover behavior erased by color changes
+	$('#sidebar a, #share a, #resolution a').not('#nav .active a').mouseenter(function(){
+		var color = $(this).css('color');
+		$(this).css('color','#ffffff');
+		$(this).data('prevcolor',color);
+	}).mouseleave(function(){
+		var color = $(this).data('prevcolor');
+		if(color){
+			$(this).css('color',color);
+		}
+	});
+	
+	// browser detect
+	if($.browser.webkit){
+		$('.icon').addClass('webkit');
+	}
+	
+	$('#sharebutton').click(function(){
+		if($('#share').hasClass('active')){
+			$('#share').removeClass('active');
+		}
+		else{
+			$('#share').addClass('active');
+		}
+		$('#resolution').removeClass('active');
+		return false;
+	});
+	
+	$('#resbutton').click(function(){
+		if($('#resolution').hasClass('active')){
+			$('#resolution').removeClass('active');
+		}
+		else{
+			$('#resolution').addClass('active');
+		}
+		$('#share').removeClass('active');
+		return false;
+	});
+
+	// download current
+	$('#download').click(function(){
+		var url = $(current_slide).find('img.image').data('url');
+		window.open(resourcepath + url+'/'+url+'.zip');
+		return false;
+	});
 	
 	// text toggle
 	$('#textbutton').click(function(){
@@ -146,14 +264,7 @@ function scrollcheck(){
 
 		$(current_slide).nextAll().filter('.slide').slice(0,5).find('img.image').addClass('active');
 		$(current_slide).prevAll().filter('.slide').slice(0,2).find('img.image').addClass('active');
-				
-		// highlight nav
-		
-		if(index >= 0){
-			$('#marker li.active').removeClass('active');
-			$('#marker li').eq(index).addClass('active');
-		}
-		
+						
 		return false;
 	}
 }
@@ -193,6 +304,9 @@ throttle = function(func, wait, options) {
 var throttled = throttle(scrollcheck, 700);
 $(window).scroll(throttled);
 
+var redrawtext_throttled = throttle(redrawtext, 1000);
+$(window).resize(redrawtext_throttled);
+
 function findoverlap(elem)
 {
 	var winHeight = $(window).height();
@@ -208,6 +322,137 @@ function findoverlap(elem)
 		return overlap/(winHeight);
 	}
     return 0;
+}
+
+// given content element and a polygon definition, fill the polygon with content text and hide original content
+function fillpolygon(content, polygon){
+	if(!polygon || polygon.length < 3){
+		return false;
+	}
+	
+	// loop back to first vertex
+	polygon.push(polygon[0]);
+	
+	var fill = $('<div class="polygon" />');
+	content.after(fill);
+	var cwidth = content.width();
+	var cheight = content.height();
+
+	content.contents().each(function(){
+		var isblock = false;
+		var samefont = true;
+		if(this.nodeType == 1){
+			isblock = $(this).css("display") == "block";
+			samefont = $(content).css("font-size") == $(this).css("font-size");
+		}
+
+		// stuff like h1 h2 etc will be difficult to wrap, put them on the first intercept and don't attempt to wrap
+		var coords;
+		if(this.nodeType == 1 && isblock && !samefont){
+			// html, no end clip
+			var clone = $(this).clone();
+			fill.append(clone);
+			
+			coords = intersect(100*(clone.position().top/content.height()), polygon);
+			
+			if(coords.length === 0){
+				coords = 0;
+			}
+			else{
+				coords = coords.shift();
+			}
+			if(coords > 0){
+				clone.prepend('<span class="filler" style="width: '+coords+'%"></span>');
+			}
+		}
+		else if(this.nodeType == 3 || this.nodeType == 1){ // text node
+			
+                        var text;
+                        
+			if(this.nodeType == 3){
+				text = this.nodeValue.trim();
+			}
+			else{
+				text = $(this).text();
+			}
+			
+			if(!text){
+				return true;
+			}
+			
+			var words = text.match(/\S+/g);
+
+			while(words.length > 0){
+				// wrap in span so we can get dimensions
+				var span;
+				if(this.nodeType == 3 || isblock){
+					span = $('<span class="line">&nbsp;</span>');
+				}
+				else{
+					span = $(this).clone().text('');
+				}
+				
+				fill.append(span);
+				
+				var left = 100*(span.position().left/cwidth);
+				var top = 100*(span.position().top/cheight);
+				
+				if(top > 100){
+					span.remove();
+					return false;
+				}
+				
+				var min = left;
+				var max = 100;
+				
+				coords = intersect(top, polygon);
+				
+				if(!coords || coords.length < 2){
+					min = 0;
+					max = 100;
+				}
+				
+				// depending on the x position of the span, we may not care about certain intercepts
+				for(var i=0; i<coords.length; i += 2){
+					if(coords[i] >= left){
+						min = coords[i];
+						max = coords[i+1];
+						break;
+					}
+				}				
+				
+				// shift to min
+				span.before('<span class="filler" style="width: '+(min-left)+'%" />');
+				
+				// type out text until wraps
+				for(i=1; i<=words.length; i++){
+					var height = span.height();
+					
+					span.text(words.slice(0, i).join(' '));
+					
+					var width = 100*(span.width()/cwidth);
+					if(min+width > max){
+						break;
+					}
+				}
+				
+				if(coords.length < 3 || min+max > 100){
+					fill.append('<br />');
+				}
+								
+				words = words.slice(i);
+			}
+			
+			if(this.nodeType != 3 && isblock){
+				fill.append('<br />');
+			}
+		}
+		else if(this.nodeType == 1){
+			fill.append($(this).clone());
+		}
+	});
+	
+	content.hide();
 }
 
 // find all intersections between a horizontal line at height, and the given polygon

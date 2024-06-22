@@ -4,7 +4,7 @@ padding: 0;
 border: 0;
 background-color: #000;
 color: #fff;
-font: 300 1.5rem/30px 'Lato',helvetica, arial, sans-serif;
+font: 300 20px/26px 'Lato',helvetica, arial, sans-serif;
 width: 100%;
 height: 100%;
 padding: 0;
@@ -39,24 +39,32 @@ a.active:hover, li.active a:hover{
 position: fixed;
 left: 0px;
 top: 0;
-z-index: 10;
-font-size: 14px;
-height: 175px;
 width: 100%;
+height: 175px;
+z-index: 10;
+-webkit-transition: color 1s;
+-moz-transition: color 1s;
+-ms-transition: color 1s;
+-o-transition: color 1s;
+transition: color 1s;
+font-size: 14px;
 }
 
-.camera{
-	width: 24px;
-	height: 24px;
-	float: left;
-	margin: 35px 13px 0 17px;
-	background-color: transparent;
+#profile{
+width: 24px;
+height: 24px;
+float: left;
+margin: 35px 13px 0 17px;
+}
+
+#profile img{
+	-moz-opacity: 0.8;
+	-webkit-opacity: 0.8;
+	opacity: 0.8;
 }
 
 .foreground{
-display: flex;
-flex-direction: column;
-justify-content: space-between;
+position: absolute;
 top: 0;
 left: 0;
 width: 100%;
@@ -68,10 +76,18 @@ z-index: 12;
 width: 100%;
 height: 100%;
 background-color: #000;
+-moz-opacity: 0.7;
+-webkit-opacity: 0.7;
+opacity: 0.7;
 position: absolute;
 top: 0;
 left: 0;
 z-index: 11;
+-webkit-transition: background-color 1s;
+-moz-transition: background-color 1s;
+-ms-transition: background-color 1s;
+-o-transition: background-color 1s;
+transition: background-color 1s;
 }
 
 #sidebar h1{
@@ -152,6 +168,16 @@ clear: both;
 
 
 /* only webkit browsers support css masks, we will implement for webkit and browser detect */
+
+.icon.camera{
+	background: transparent url(img/camera.png) no-repeat;
+}
+
+.icon.camera.webkit{
+	background-image: none;
+	-webkit-mask-box-image: url(img/camera_mask.png);
+}
+
 .icon.monitor{
 	background: transparent url(img/monitor.png) no-repeat;
 }
@@ -281,12 +307,75 @@ background-color: #000;
 	background-color: #444;
 }
 
+/* share */
+#share, #resolution{
+	position: fixed;
+	bottom: 0;
+	left: 170px;
+	z-index: 21;
+	height: 100%;
+	background-color: #333;
+	width: 0;
+	overflow: hidden;
+	
+	-webkit-transition: color 1s, background-color 1s, width 0.5s;
+	-moz-transition: color 1s, background-color 1s, width 0.5s;
+	-ms-transition: color 1s, background-color 1s, width 0.5s;
+	-o-transition: color 1s, background-color 1s, width 0.5s;
+	transition: color 1s, background-color 1s, width 0.5s;
+	font-size: 14px;
+}
+
+#share.active, #resolution.active{
+	width: 163px;
+}
+
+#share ul, #resolution ul{
+	position: absolute;
+	bottom: 33px;
+	left: 15px;
+	width: 155px;
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#share ul li, #resolution ul li{
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	height: 36px;
+	line-height: 36px;
+	position: relative;
+	float: left;
+	clear: both;
+}
+
+#resolution.active {
+width: 120px;
+}
+
+#resolution ul{
+bottom: 40px;
+}
+
+#resolution ul li{
+height: 28px;
+line-height: 28px;
+margin-left: 10px;
+}
+
+#resolution ul li.active a{
+border-bottom: 1px solid #aaa;
+}
+
 /* content */
 
 #main{
 margin: 0;
 padding: 175px 0 0 0;
-min-width: 830px;
 min-height: 100%;
 overflow: hidden;
 z-index: 1;
@@ -538,29 +627,18 @@ display: inline-block;
 height: 10px;
 min-width: 1px;
 }
-#fullpage {
-	display: none;
-	position: absolute;
-	z-index: 9999;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background-size: contain;
-	background-repeat: no-repeat no-repeat;
-	background-position: center center;
-	background-color: black;
-  }
+
 @media (min-width:768px) {
-	html,body{
-		font: 300 1.2rem/24px 'Lato',helvetica, arial, sans-serif;
-		}
-	#sidebar {
+	#sidebar{
 		width: 293px;
 		height: 100%;
 	}
+	
 	#main{
 		margin: 0;
 		padding: 0 0 0 300px;
 	}
+	html,body{
+		font: 300 18px/22px 'Lato',helvetica, arial, sans-serif;
+		}
 }
