@@ -307,70 +307,6 @@ background-color: #000;
 	background-color: #444;
 }
 
-/* share */
-#share, #resolution{
-	position: fixed;
-	bottom: 0;
-	left: 170px;
-	z-index: 21;
-	height: 100%;
-	background-color: #333;
-	width: 0;
-	overflow: hidden;
-	
-	-webkit-transition: color 1s, background-color 1s, width 0.5s;
-	-moz-transition: color 1s, background-color 1s, width 0.5s;
-	-ms-transition: color 1s, background-color 1s, width 0.5s;
-	-o-transition: color 1s, background-color 1s, width 0.5s;
-	transition: color 1s, background-color 1s, width 0.5s;
-	font-size: 14px;
-}
-
-#share.active, #resolution.active{
-	width: 163px;
-}
-
-#share ul, #resolution ul{
-	position: absolute;
-	bottom: 33px;
-	left: 15px;
-	width: 155px;
-	display: block;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-#share ul li, #resolution ul li{
-	display: block;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	height: 36px;
-	line-height: 36px;
-	position: relative;
-	float: left;
-	clear: both;
-}
-
-#resolution.active {
-width: 120px;
-}
-
-#resolution ul{
-bottom: 40px;
-}
-
-#resolution ul li{
-height: 28px;
-line-height: 28px;
-margin-left: 10px;
-}
-
-#resolution ul li.active a{
-border-bottom: 1px solid #aaa;
-}
-
 /* content */
 
 #main{
@@ -628,7 +564,7 @@ display: inline-block;
 height: 10px;
 min-width: 1px;
 }
-@media (min-width:600px) {
+@media (min-width:768px) {
 	#sidebar {
 		width: 293px;
 		height: 100%;
