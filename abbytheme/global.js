@@ -25,11 +25,11 @@ $(document).ready(function(){
 
 	// set slide heights to prevent reflow
 	$('.slide').each(function(){
-		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%');
-		$(this).addEventListener('click', function() {
-			fullPage.style.backgroundImage = 'url(' + $(this).attr('src') + ')'
+		$(this).css('padding-top', (100 * $(this).data('imageheight') / $(this).data('imagewidth')) + '%');
+		$(this).click(function() {
+			fullPage.style.backgroundImage = 'url(' + $(this).find('img').attr('src') + ')';
 			fullPage.style.display = 'block';
-		})
+		});
 	});
 	
 	resourcepath = $('body').data('respath');
