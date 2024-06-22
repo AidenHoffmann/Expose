@@ -1,23 +1,3 @@
-const CSnavbarMenu = document.querySelector("#navigation");
-const CShamburgerMenu = document.querySelector("#navigation .cs-toggle");
-
-CShamburgerMenu.addEventListener('click', function() {
-	CShamburgerMenu.classList.toggle("cs-active");
-	CSnavbarMenu.classList.toggle("cs-active");
-	ariaExpanded();
-});
-
-function ariaExpanded() {
-	const csUL = document.querySelector('#cs-expanded');
-	const csExpanded = csUL.getAttribute('aria-expanded');
-
-	if (csExpanded === 'false') {
-		csUL.setAttribute('aria-expanded', 'true');
-	} else {
-		csUL.setAttribute('aria-expanded', 'false');
-	}
-}
-
 var loadnext = 5; // preload next 5 slides
 var loadprev = 2; // keep previous 2 slides in case user scrolls up
 
