@@ -46,7 +46,7 @@ z-index: 10;
 -o-transition: color 1s;
 transition: color 1s;
 font-size: 14px;
-height: 200px;
+height: 175px;
 width: 100%;
 }
 
@@ -375,7 +375,7 @@ border-bottom: 1px solid #aaa;
 
 #main{
 margin: 0;
-padding: 150px 0 0 0;
+padding: 175px 0 0 0;
 min-width: 830px;
 min-height: 100%;
 overflow: hidden;
@@ -628,7 +628,7 @@ display: inline-block;
 height: 10px;
 min-width: 1px;
 }
-@media only screen and (min-width:600px) {
+@media (min-width:600px) {
 	#sidebar {
 		width: 293px;
 		height: 100%;
