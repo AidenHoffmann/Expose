@@ -64,12 +64,15 @@ function hideImage() {
 $(document).ready(function(){
 	const fullPage = document.getElementById('fullpage');
 	const image = document.getElementById('image');
+	const text = document.getElementById('text');
 	// set slide heights to prevent reflow
 	$('.slide').each(function(){
 		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%');
+		const desc = $(this).find('p').text();
 		$(this).find('img').click(function() {
 			image.src = $(this).attr('src');
-			fullPage.style.display = 'block';
+			fullPage.style.display = 'flex';
+			text.textContent = desc
 		})
 	});
 	
