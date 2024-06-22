@@ -14,7 +14,7 @@
 		<script src="{{basepath}}global.js"></script>
 	</head>
 <body data-resolution="{{resolution}}" data-respath="{{resourcepath}}">
-
+<div id="fullpage" onclick="this.style.display='none';"></div>
 <div id="sidebar">
 	<div class="foreground">
 		<div id="profile" class="camera icon"></div>
@@ -22,13 +22,18 @@
 		<ul id="nav">
 			{{navigation}}			 
 		</ul>
+		<button class="cs-toggle" aria-label="mobile menu toggle">
+			<div class="cs-box" aria-hidden="true">
+				<span class="cs-line cs-line1" aria-hidden="true"></span>
+				<span class="cs-line cs-line2" aria-hidden="true"></span>
+				<span class="cs-line cs-line3" aria-hidden="true"></span>
+			</div>
+		</button>
 	</div>
 	
 	<ul id="control">
 	<li><a href="#" id="social-link"><img src="img/twitter.png" alt="" class="icon"></a></li>
 	</ul>
-			
-	<div class="background"></div>
 </div>
 
 <div id="main">
