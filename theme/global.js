@@ -55,15 +55,14 @@ function redrawtext(){
 	drawtext();
 }
 
-const fullPage = document.getElementById('fullpage');
-
 function hideImage() {
+	const fullPage = document.getElementById('fullpage');
 	fullPage.classList.remove("active");
 	fullPage.style.display = 'none';
 }
 
 $(document).ready(function(){
-	
+	const fullPage = document.getElementById('fullpage');
 	// set slide heights to prevent reflow
 	$('.slide').each(function(){
 		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%');
