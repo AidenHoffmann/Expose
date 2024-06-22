@@ -629,13 +629,22 @@ min-width: 1px;
 #fullpage {
 	display: none;
 	position: fixed;
-	align-items: start;
 	z-index: 100;
 	top: 0;
 	left: 0;
 	width: 100vw;
 	height: 100vh;
-
+  }
+  #fullpage .wrapper {
+	align-items: start;
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 100%;
+	padding: 10%;
   }
   #fullpage .background {
 	position: absolute;
@@ -648,9 +657,9 @@ min-width: 1px;
   }
   #image {
 	background-color: black;
-	width: 90%;
+	width: 100%;
 	height: auto;
-	margin: 5vw auto;
+	margin: auto;
 	object-fit: cover;
 	z-index: 101;
   }

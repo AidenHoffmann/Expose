@@ -71,7 +71,7 @@ $(document).ready(function(){
 		const desc = $(this).find('p').text();
 		$(this).find('img').click(function() {
 			image.src = $(this).attr('src');
-			fullPage.style.display = 'flex';
+			fullPage.style.display = 'block';
 			text.textContent = desc
 		})
 	});
