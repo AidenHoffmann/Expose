@@ -72,7 +72,12 @@ $(document).ready(function(){
 		$(this).find('img').click(function() {
 			image.src = $(this).attr('src');
 			fullPage.style.display = 'block';
-			text.textContent = desc
+			if (desc) {
+				text.textContent = desc;
+				text.style.display = 'block';
+			} else {
+				text.style.display = 'none';
+			}			
 		})
 	});
 	
