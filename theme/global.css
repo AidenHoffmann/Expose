@@ -37,7 +37,7 @@ a.active:hover, li.active a:hover{
 
 #sidebar{
 position: fixed;
-background-color: black;
+background-color: #1C1E22;
 left: 0px;
 top: 0;
 width: 100%;
@@ -627,7 +627,7 @@ min-width: 1px;
 }
 #fullpage {
 	display: none;
-	position: absolute;
+	position: fixed;
 	z-index: 9999;
 	top: 0;
 	left: 0;
@@ -649,6 +649,11 @@ min-width: 1px;
 	filter: blur(0.6);
 	z-index: 100;
   }
+@media (min-width:600px) {
+	#main {
+		column-count: 2;
+	}
+}
 @media (min-width:768px) {
 	#sidebar{
 		width: 293px;
@@ -679,5 +684,8 @@ min-width: 1px;
 @media (min-width:1024px) {
 	.content p {
 		padding: 1rem;
+	}
+	#main {
+		column-count: 3;
 	}
 }
