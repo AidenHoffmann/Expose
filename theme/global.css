@@ -207,12 +207,7 @@ column-gap: 20px;
 }
 
 .icon{
-	display: inline;
-	float: left;
-	width: 18px;
-	height: 16px;
-	margin: 5px 20px 0 15px;
-	mix-blend-mode: screen;
+	display: none;
 }
 
 
@@ -727,5 +722,13 @@ min-width: 1px;
 	}
 	#navigation .cs-toggle {
 		display: none;
+	}
+	.icon{
+		display: inline;
+		float: left;
+		width: 18px;
+		height: 16px;
+		margin: 5px 20px 0 15px;
+		mix-blend-mode: screen;
 	}
 }

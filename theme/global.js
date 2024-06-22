@@ -18,45 +18,6 @@ function ariaExpanded() {
 	}
 }
 
-// mobile nav toggle code
-const dropDowns = Array.from(document.querySelectorAll('#navigation .cs-dropdown'));
-	for (const item of dropDowns) {
-		const onClick = () => {
-		item.classList.toggle('cs-active')
-	}
-	item.addEventListener('click', onClick)
-	}
-							
-
-	const $btn = window['dark-mode-toggle']
-
-	const bodyClassList = document.body.classList
-	const storageKey = 'isDarkModeEnabled'
-	
-	let isEnabled = localStorage.getItem(storageKey)
-	
-	const update = () => {
-		bodyClassList.toggle('dark-mode', isEnabled)
-	}
-	
-	const save = () => {
-		if (isEnabled) localStorage.setItem(storageKey, true)
-		else localStorage.removeItem(storageKey)
-	}
-	
-	const toggle = () => {
-		isEnabled = !isEnabled
-	
-		update()
-		save()
-	}
-	
-	update()
-	
-	$btn.addEventListener('click', toggle)
-
-
-
 var loadnext = 5; // preload next 5 slides
 var loadprev = 2; // keep previous 2 slides in case user scrolls up
 
