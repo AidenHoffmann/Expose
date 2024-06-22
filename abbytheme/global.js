@@ -155,7 +155,7 @@ $(document).ready(function(){
 	else{
 		// assume large->small order
 		var found = false;
-		var sidebar_width = $('#marker').width() + $('#sidebar').width();
+		var sidebar_width = $('#sidebar').width();
 		// account for pixel density and sidebar width
 		var device_ratio = window.devicePixelRatio ? window.devicePixelRatio : 1;
 		var adjusted_screen_width = ($(window).width() - sidebar_width) * device_ratio;
@@ -242,21 +242,7 @@ $(document).ready(function(){
 		
 		return false;
 	});
-	
-	// add marker
-	var mheight = 100/$('.slide').length;
-	$('.slide').each(function(i, v){
-		var color1 = $(this).data('color1');
-		var color7 = $(this).data('color7');
-		if(!color1){
-			color1 = '#000';
-		}
-		if(!color7){
-			color7 = '#fff';
-		}
-		$('#marker').append('<li style="background-color: '+color1+'; height: '+mheight+'%"><a href="#'+(i+1)+'" style="background-color: '+color7+'"></a></li>');
-	});
-	
+		
 });
 
 function scrollcheck(){
@@ -367,12 +353,7 @@ function scrollcheck(){
 		$('#sidebar .icon.webkit, #share .icon.webkit').css('background-color',sidecolor);
 				
 		// highlight nav
-		
-		if(index >= 0){
-			$('#marker li.active').removeClass('active');
-			$('#marker li').eq(index).addClass('active');
-		}
-		
+				
 		return false;
 	}
 }
