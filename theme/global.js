@@ -1,3 +1,62 @@
+const CSnavbarMenu = document.querySelector("#navigation");
+const CShamburgerMenu = document.querySelector("#navigation .cs-toggle");
+
+CShamburgerMenu.addEventListener('click', function() {
+	CShamburgerMenu.classList.toggle("cs-active");
+	CSnavbarMenu.classList.toggle("cs-active");
+	ariaExpanded();
+});
+
+function ariaExpanded() {
+	const csUL = document.querySelector('#cs-expanded');
+	const csExpanded = csUL.getAttribute('aria-expanded');
+
+	if (csExpanded === 'false') {
+		csUL.setAttribute('aria-expanded', 'true');
+	} else {
+		csUL.setAttribute('aria-expanded', 'false');
+	}
+}
+
+// mobile nav toggle code
+const dropDowns = Array.from(document.querySelectorAll('#navigation .cs-dropdown'));
+	for (const item of dropDowns) {
+		const onClick = () => {
+		item.classList.toggle('cs-active')
+	}
+	item.addEventListener('click', onClick)
+	}
+							
+
+	const $btn = window['dark-mode-toggle']
+
+	const bodyClassList = document.body.classList
+	const storageKey = 'isDarkModeEnabled'
+	
+	let isEnabled = localStorage.getItem(storageKey)
+	
+	const update = () => {
+		bodyClassList.toggle('dark-mode', isEnabled)
+	}
+	
+	const save = () => {
+		if (isEnabled) localStorage.setItem(storageKey, true)
+		else localStorage.removeItem(storageKey)
+	}
+	
+	const toggle = () => {
+		isEnabled = !isEnabled
+	
+		update()
+		save()
+	}
+	
+	update()
+	
+	$btn.addEventListener('click', toggle)
+
+
+
 var loadnext = 5; // preload next 5 slides
 var loadprev = 2; // keep previous 2 slides in case user scrolls up
 
