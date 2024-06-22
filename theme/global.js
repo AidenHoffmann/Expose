@@ -67,8 +67,8 @@ $(document).ready(function(){
 	// set slide heights to prevent reflow
 	$('.slide').each(function(){
 		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%');
-		$('.slide').find('img').click(function() {
-			image.src = $(this).find('img').attr('src');
+		$(this).find('img').click(function() {
+			image.src = $(this).attr('src');
 			fullPage.style.display = 'block';
 		})
 	});
