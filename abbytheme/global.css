@@ -50,17 +50,6 @@ height: 200px;
 width: 100%;
 }
 
-@media only screen and (min-width:600px) {
-	#sidebar {
-		width: 293px;
-		height: 100%;
-	}
-	#main{
-		margin: 0;
-		padding: 0 0 0 300px;
-	}
-}
-
 #profile{
 width: 24px;
 height: 24px;
@@ -386,7 +375,7 @@ border-bottom: 1px solid #aaa;
 
 #main{
 margin: 0;
-padding: 0 200px 0 0;
+padding: 150px 0 0 0;
 min-width: 830px;
 min-height: 100%;
 overflow: hidden;
@@ -638,4 +627,14 @@ white-space: nowrap;
 display: inline-block;
 height: 10px;
 min-width: 1px;
+}
+@media only screen and (min-width:600px) {
+	#sidebar {
+		width: 293px;
+		height: 100%;
+	}
+	#main{
+		margin: 0;
+		padding: 0 0 0 300px;
+	}
 }
