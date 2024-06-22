@@ -7,29 +7,25 @@
 
 		<title>Abby Hoffmann Photography</title>
 		<link href='https://fonts.googleapis.com/css?family=Lato:300,100' rel='stylesheet' type='text/css' />
+
 		<link rel="stylesheet" href="{{basepath}}global.css">
 		<script src="{{basepath}}json.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="{{basepath}}cookie.js"></script>
 		<script src="{{basepath}}global.js"></script>
 	</head>
-<body data-resolution="{{resolution}}" data-respath="{{resourcepath}}">
-
+<body>
+<div id="fullpage" onclick="this.style.display='none';"></div>
 <div id="sidebar">
 	<div class="foreground">
-		<div id="profile" class="camera icon"></div>
-		<h1>Abby Hoffmann Photography</h1>
-		<ul id="nav">
-			{{navigation}}			 
-		</ul>
+		<div class="topper">
+			<img src="./img/camera.png" alt="" class="camera icon">
+			<h1>Abby Hoffmann Photography</h1>
+		</div>
+		<div class="lower">
+			<img src="./img/twitter.png" alt="">
+		</div>
 	</div>
-	
-	<ul id="control">
-	<li style="display: {{text_toggle}}"><a href="#" id="textbutton" class="active"><span class="toggle icon"></span><span class="text">hide text</span></a></li>
-	<li  style="display: {{download_button}}"><a href="#" id="download"><span class="download icon"></span>download</a></li>
-	</ul>
-			
-	<div class="background"></div>
 </div>
 
 <div id="main">

@@ -45,21 +45,18 @@ height: 175px;
 width: 100%;
 }
 
-#profile{
-width: 24px;
-height: 24px;
-float: left;
-margin: 35px 13px 0 17px;
-}
-
-#profile img{
-	-moz-opacity: 0.8;
-	-webkit-opacity: 0.8;
-	opacity: 0.8;
+.camera{
+	width: 24px;
+	height: 24px;
+	float: left;
+	margin: 35px 13px 0 17px;
+	background-color: transparent;
 }
 
 .foreground{
-position: absolute;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
 top: 0;
 left: 0;
 width: 100%;
@@ -155,16 +152,6 @@ clear: both;
 
 
 /* only webkit browsers support css masks, we will implement for webkit and browser detect */
-
-.icon.camera{
-	background: transparent url(img/camera.png) no-repeat;
-}
-
-.icon.camera.webkit{
-	background-image: none;
-	-webkit-mask-box-image: url(img/camera_mask.png);
-}
-
 .icon.monitor{
 	background: transparent url(img/monitor.png) no-repeat;
 }
