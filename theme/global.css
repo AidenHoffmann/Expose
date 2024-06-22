@@ -639,12 +639,12 @@ min-width: 1px;
 	align-items: start;
 	position: absolute;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	top: 0;
 	left: 0;
 	width: 100%;
 	min-height: 100%;
-	padding: 10%;
   }
   #fullpage .background {
 	position: absolute;
@@ -657,8 +657,9 @@ min-width: 1px;
   }
   #image {
 	background-color: black;
-	width: 100%;
+	width: 80%;
 	height: auto;
+	margin-top: 5vw;
 	margin: auto;
 	object-fit: cover;
 	z-index: 101;
