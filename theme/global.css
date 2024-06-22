@@ -74,7 +74,7 @@ z-index: 12;
 }
 
 #sidebar h1{
-font: 300 17px/18px 'Roboto', sans-serif;
+font: 700 28px/18px 'Roboto', sans-serif;
 margin: 0;
 padding: 39px 0 20px 5px;
 float: left;
@@ -125,7 +125,7 @@ column-gap: 20px;
 
 #control{
 	position: absolute;
-	top: 35px;
+	top: 26px;
 	right: 17px;
 	z-index: 20;
 	list-style: none;
@@ -141,6 +141,10 @@ column-gap: 20px;
 	height: 28px;
 	line-height: 28px;
 	position: relative;
+}
+
+#control li a {
+	font-size: 2rem;
 }
 
 .icon{
