@@ -40,13 +40,6 @@ $(document).ready(function(){
 	});
   			
 	scrollcheck();
-
-	// download current
-	$('#download').click(function(){
-		var url = $(current_slide).find('img.image').data('url');
-		window.open(resourcepath + url+'/'+url+'.zip');
-		return false;
-	});
 	
 	// text toggle
 	$('#textbutton').click(function(){
