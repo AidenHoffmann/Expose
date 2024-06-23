@@ -2,12 +2,17 @@ html,body{
 margin: 0;
 padding: 0;
 border: 0;
-background-color: #000;
+background-color: #EDEDED;
 color: #fff;
 font: 300 20px/26px 'Roboto', sans-serif;
 width: 100%;
 height: 100%;
 padding: 0;
+}
+.container {
+	width: 100%;
+	max-width: 1920px;
+	margin: auto;
 }
 
 a{
@@ -78,7 +83,7 @@ z-index: 12;
 #sidebar h1{
 font: 700 28px/18px 'Roboto', sans-serif;
 margin: 0;
-padding: 39px 0 20px 20px;
+padding: 46px 0 20px 20px;
 float: left;
 }
 #sidebar h2{
@@ -240,7 +245,7 @@ column-gap: 20px;
   }
 #control{
 	position: absolute;
-	top: 31px;
+	top: 39px;
 	right: 17px;
 	z-index: 20;
 	list-style: none;
@@ -506,6 +511,7 @@ margin-bottom: 7px;
 .slide{
  width: 100%;
  padding-top: 0 !important;
+ background-color: white;
 }
 
 #comments{
@@ -806,18 +812,24 @@ min-width: 1px;
 		font: 300 18px/22px 'Roboto', sans-serif;
 	}
 	#control {
-		bottom: 40px;
-		left: 15px;
-		top: auto;
-		right: auto;
+		position: static;
+		align-items: start;
+		margin: 1rem 40px;
 	}
 	#nav {
 		display: flex;
 		flex-direction: column;
 		row-gap: 15px;
+		padding-left: 44px;
 	}
 	.slide {
 		width: calc((100vw - 332px) / 2);
+	}
+	h1, h2 {
+		padding-left: 44px;
+	}
+	h1 {
+		padding-top: 31px;
 	}
 }
 @media (min-width:1024px) {

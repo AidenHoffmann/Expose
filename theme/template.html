@@ -16,40 +16,41 @@
 		<script src="{{basepath}}global.js"></script>
 	</head>
 <body data-resolution="{{resolution}}" data-respath="{{resourcepath}}">
-<div id="fullpage" onclick="hideImage()">
-	<div class="background"></div>
-	<div class="wrapper">
-		<img src="" alt="" id="image">
-		<p id="text"></p>
-	</div>
-</div>
-<div id="sidebar">
-	<div class="foreground" id="navigation">
-		<h1>Abby Hoffmann</h1>
-		<h2>PHOTOGRAPHY</h2>
-		<ul id="nav">
-			{{navigation}}			 
-		</ul>
-		<ul id="mobile-nav" aria-expanded="false">
-			{{navigation}}			 
-		</ul>
-	</div>
-	
-	<ul id="control">
-	<li><a href="#" id="social-link"><i class='bx bxl-instagram' style='color:#ffffff'  ></i></a></li>
-	<button class="cs-toggle" aria-label="mobile menu toggle">
-		<div class="cs-box" aria-hidden="true">
-			<span class="cs-line cs-line1" aria-hidden="true"></span>
-			<span class="cs-line cs-line2" aria-hidden="true"></span>
-			<span class="cs-line cs-line3" aria-hidden="true"></span>
+	<div class="container">
+		<div id="fullpage" onclick="hideImage()">
+			<div class="background"></div>
+			<div class="wrapper">
+				<img src="" alt="" id="image">
+				<p id="text"></p>
+			</div>
 		</div>
-	</button>
-	</ul>
-</div>
-
-<div id="main" data-masonry='{ "itemSelector": ".slide", "columnWidth": ".slide", "gutter": ".gutter-sizer"}'>
-	<div class="gutter-sizer"></div>
-	{{content}}
-</div>
+		<div id="sidebar">
+			<div class="foreground" id="navigation">
+				<h1>Abby Hoffmann</h1>
+				<h2>PHOTOGRAPHY</h2>
+				<ul id="nav">
+					{{navigation}}			 
+				</ul>
+				<ul id="mobile-nav" aria-expanded="false">
+					{{navigation}}			 
+				</ul>
+				<ul id="control">
+					<li><a href="#" id="social-link"><i class='bx bxl-instagram' style='color:#ffffff'  ></i></a></li>
+					<button class="cs-toggle" aria-label="mobile menu toggle">
+						<div class="cs-box" aria-hidden="true">
+							<span class="cs-line cs-line1" aria-hidden="true"></span>
+							<span class="cs-line cs-line2" aria-hidden="true"></span>
+							<span class="cs-line cs-line3" aria-hidden="true"></span>
+						</div>
+					</button>
+					</ul>
+			</div>
+		</div>
+		
+		<div id="main" data-masonry='{ "itemSelector": ".slide", "columnWidth": ".slide", "gutter": ".gutter-sizer"}'>
+			<div class="gutter-sizer"></div>
+			{{content}}
+		</div>
+	</div>
 </body>
 </html>
