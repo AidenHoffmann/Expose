@@ -37,7 +37,7 @@ a.active:hover, li.active a:hover{
 
 #sidebar{
 position: fixed;
-background-color: #1C1E22;
+background-color: #1F1A22;
 left: 0px;
 top: 0;
 width: 100%;
@@ -78,6 +78,11 @@ font: 700 28px/18px 'Roboto', sans-serif;
 margin: 0;
 padding: 39px 0 20px 20px;
 float: left;
+}
+#sidebar h2{
+font: 300 28px/18px 'Roboto', sans-serif;
+margin: 0;
+padding: 0 0 20px 20px;
 }
 
 #nav{
@@ -369,7 +374,7 @@ padding: 157px 0 0 0;
 min-height: 100%;
 overflow: hidden;
 z-index: 1;
-background-color: white;
+background-color: #EDEDED;
 position: relative;
 }
 
@@ -634,13 +639,6 @@ min-width: 1px;
     opacity: 0.6;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px); 
-}
-.close {
-	position: absolute;
-	right: 0;
-	top: 0;
-	cursor: pointer;
-	font-size: 2rem;
 }
 .gutter-sizer {
 	width: 7px;
