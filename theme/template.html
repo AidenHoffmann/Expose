@@ -39,6 +39,7 @@
 
 <div id="main" >
 	{{content}}
+	<a class="pagination__next" href="/page/2">Next</a>
 </div>
 <script>
 	document.addEventListener('DOMContentLoaded', function () {
@@ -47,7 +48,7 @@
 			columnWidth: 200
 		});
 		
-		var infScroll = new InfiniteScroll(grid, {
+		var infScroll = new InfiniteScroll('#main', {
 			path: '.pagination__next',
 			append: '.slide',
 			history: false,
