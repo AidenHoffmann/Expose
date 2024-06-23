@@ -62,6 +62,7 @@ function hideImage() {
 }
 
 $(document).ready(function(){
+
 	const fullPage = document.getElementById('fullpage');
 	const image = document.getElementById('image');
 	const text = document.getElementById('text');

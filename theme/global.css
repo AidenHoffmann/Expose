@@ -627,7 +627,9 @@ min-width: 1px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px); 
 }
-
+.slide img {
+	cursor: pointer;
+}
   #image {
 	background-color: black;
 	width: 80%;
