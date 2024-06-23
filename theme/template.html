@@ -38,11 +38,26 @@
 </div>
 
 <div id="main" 
-	data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 200 }'
-	data-infinite-scroll='{ "path": ".pagination__next", "append": ".post", "history": false }'
+	data-masonry='{ "itemSelector": ".slide", "columnWidth": 200 }'
+	data-infinite-scroll='{ "path": ".pagination__next", "append": ".slide", "history": false }'
 	>
 	{{content}}
 </div>
-
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		var grid = document.querySelector('#main');
+		var msnry = new Masonry(grid, {
+			itemSelector: '.slide',
+			columnWidth: 200
+		});
+		
+		var infScroll = new InfiniteScroll(grid, {
+			path: '.pagination__next',
+			append: '.post',
+			history: false,
+			outlayer: msnry // integrate with Masonry
+		});
+	});
+</script>
 </body>
 </html>

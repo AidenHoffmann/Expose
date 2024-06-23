@@ -1,5 +1,5 @@
-var loadnext = 5; // preload next 5 slides
-var loadprev = 2; // keep previous 2 slides in case user scrolls up
+var loadnext = 10; // preload next 5 slides
+var loadprev = 10; // keep previous 2 slides in case user scrolls up
 
 var videoloadnext=2; // preload videos less
 
@@ -140,7 +140,7 @@ $(document).ready(function(){
 
 	}
 		
-/* 	scrollcheck(); */
+	scrollcheck();
 	
 	// add back hover behavior erased by color changes
 	$('#sidebar a, #share a, #resolution a').not('#nav .active a').mouseenter(function(){
@@ -159,51 +159,7 @@ $(document).ready(function(){
 		$('.icon').addClass('webkit');
 	}
 	
-	$('#sharebutton').click(function(){
-		if($('#share').hasClass('active')){
-			$('#share').removeClass('active');
-		}
-		else{
-			$('#share').addClass('active');
-		}
-		$('#resolution').removeClass('active');
-		return false;
-	});
-	
-	$('#resbutton').click(function(){
-		if($('#resolution').hasClass('active')){
-			$('#resolution').removeClass('active');
-		}
-		else{
-			$('#resolution').addClass('active');
-		}
-		$('#share').removeClass('active');
-		return false;
-	});
 
-	// download current
-	$('#download').click(function(){
-		var url = $(current_slide).find('img.image').data('url');
-		window.open(resourcepath + url+'/'+url+'.zip');
-		return false;
-	});
-	
-	// text toggle
-	$('#textbutton').click(function(){
-		if($(this).hasClass('active')){
-			$('.post').addClass('hidden');
-			$(this).removeClass('active');
-			$(this).find('.text').text('show text');
-		}
-		else{
-			$('.post').removeClass('hidden');
-			$(this).addClass('active');
-			$(this).find('.text').text('hide text');
-		}
-		
-		return false;
-	});
-	
 });
 
 function scrollcheck(){
