@@ -117,8 +117,8 @@ $(document).ready(function(){
 
 		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%');
 		const desc = $(this).find('p').text();
-		$(this).find('img').click(function() {
-			image.src = $(this).attr('src');
+		$(this).find('title').click(function() {
+			image.src = $(this).closest('.slide').find('img').attr('src');
 			fullPage.classList.add("active")
 			if (desc) {
 				text.textContent = desc;
