@@ -852,7 +852,7 @@ min-width: 1px;
 		padding-left: 44px;
 	}
 	.slide {
-		width: calc((100vw - 332px) / 2);
+		width: calc((100vw - 314px) / 2);
 	}
 	h1, h2 {
 		padding-left: 44px !important;
@@ -860,11 +860,11 @@ min-width: 1px;
 }
 @media (min-width:1024px) {
 	.slide {
-		width: calc((100vw - 338px) / 3);
+		width: calc((100vw - 321px) / 3);
 	}
 }
 @media (min-width:1800px) {
 	.slide {
-		width: calc((100% - 338px) / 4);
+		width: calc((100% - 328px) / 4);
 	}
 }
