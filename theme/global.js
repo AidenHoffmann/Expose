@@ -66,9 +66,11 @@ $(document).ready(function(){
 	const fullPage = document.getElementById('fullpage');
 	const image = document.getElementById('image');
 	const text = document.getElementById('text');
+	resourcepath = $('body').data('respath');
 	// set slide heights to prevent reflow
 	$('.slide').each(function(){
 		// set image url, remove for dynamic loading
+		var set_res = current_resolution;
 		if(parseInt($(this).data('imagewidth')) < current_resolution){
 			set_res = parseInt($(this).data('imagewidth'));
 		}
@@ -91,9 +93,6 @@ $(document).ready(function(){
 		})
 	});
 	
-
-
-	resourcepath = $('body').data('respath');
 	
 	// detect resolution
 	var saved_width = $.cookie('resolution');
