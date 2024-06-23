@@ -608,9 +608,11 @@ min-width: 1px;
 	overflow-y: scroll;
 	height: 100vh;
 	transition: all 0.4s ease-in-out;
+	opacity: 0;
 }
 #fullpage.active {
 	visibility: visible;
+	opacity: 1;
 }
   #fullpage .wrapper {
 	position: absolute;
@@ -638,10 +640,11 @@ min-width: 1px;
 }
   #image {
 	background-color: black;
-	width: 80%;
+	width: auto;
 	height: auto;
 	margin: 0 auto;
-	max-width: 1100px;
+	max-width: min(80%, 1100px);
+	max-height: 80%;
 	object-fit: cover;
 	z-index: 101;
 	cursor: pointer;

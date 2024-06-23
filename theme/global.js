@@ -82,6 +82,7 @@ $(document).ready(function(){
 		const desc = $(this).find('p').text();
 		$(this).find('img').click(function() {
 			image.src = $(this).attr('src');
+			console.log(image.width / image.height)
 			fullPage.classList.add("active")
 			if (desc) {
 				text.textContent = desc;
