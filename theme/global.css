@@ -385,7 +385,8 @@ position: relative;
 margin-bottom: 7px;
 }
 .slide{
- width: 100%
+ width: 100%;
+ padding-top: 0 !important;
 }
 
 #comments{
@@ -681,11 +682,11 @@ min-width: 1px;
 		row-gap: 15px;
 	}
 	.slide {
-		width: calc((100vw - 300px) / 2);
+		width: calc((100vw - 317px) / 2);
 	}
 }
 @media (min-width:1024px) {
 	.slide {
-		width: calc((100vw - 300px) / 3);
+		width: calc((100vw - 317px) / 3);
 	}
 }
