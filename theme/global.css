@@ -451,7 +451,6 @@ left: 0;
 float: none;
 width: 100%;
 height: auto;
-visibility: hidden;
 top: 0;
 left: 0;
 z-index: 1;
@@ -600,7 +599,7 @@ height: 10px;
 min-width: 1px;
 }
 #fullpage {
-	display: none;
+	visibility: hidden;
 	position: fixed;
 	z-index: 100;
 	top: 0;
@@ -608,7 +607,11 @@ min-width: 1px;
 	width: 100vw;
 	overflow-y: scroll;
 	height: 100vh;
-  }
+	transition: all 0.4s ease-in-out;
+}
+#fullpage.active {
+	visibility: visible;
+}
   #fullpage .wrapper {
 	position: absolute;
 	display: flex;
@@ -666,7 +669,7 @@ min-width: 1px;
 	
 	#main{
 		margin: 0;
-		padding: 0 0 0 300px;
+		padding: 7px 7px 0 300px;
 	}
 	html,body{
 		font: 300 18px/22px 'Roboto', sans-serif;
@@ -682,11 +685,11 @@ min-width: 1px;
 		row-gap: 15px;
 	}
 	.slide {
-		width: calc((100vw - 317px) / 2);
+		width: calc((100vw - 324px) / 2);
 	}
 }
 @media (min-width:1024px) {
 	.slide {
-		width: calc((100vw - 317px) / 3);
+		width: calc((100vw - 324px) / 3);
 	}
 }

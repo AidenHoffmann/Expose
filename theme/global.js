@@ -58,7 +58,6 @@ function redrawtext(){
 function hideImage() {
 	const fullPage = document.getElementById('fullpage');
 	fullPage.classList.remove("active");
-	fullPage.style.display = 'none';
 }
 
 $(document).ready(function(){
@@ -83,7 +82,7 @@ $(document).ready(function(){
 		const desc = $(this).find('p').text();
 		$(this).find('img').click(function() {
 			image.src = $(this).attr('src');
-			fullPage.style.display = 'block';
+			fullPage.classList.add("active")
 			if (desc) {
 				text.textContent = desc;
 				text.style.display = 'block';
@@ -291,8 +290,8 @@ throttle = function(func, wait, options) {
 /* var throttled = throttle(scrollcheck, 700);
 $(window).scroll(throttled); */
 
-var redrawtext_throttled = throttle(redrawtext, 1000);
-$(window).resize(redrawtext_throttled);
+/* var redrawtext_throttled = throttle(redrawtext, 1000);
+$(window).resize(redrawtext_throttled); */
 
 function findoverlap(elem)
 {
