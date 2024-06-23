@@ -66,6 +66,8 @@ margin: 35px 13px 0 17px;
 
 .foreground{
 position: absolute;
+display: flex;
+flex-direction: column;
 top: 0;
 left: 0;
 width: 100%;
@@ -96,13 +98,15 @@ row-gap: 10px;
 column-gap: 20px;
 }
 
-#nav ul{
+#nav ul,
+#mobile-nav ul{
 	margin: 0;
 	padding: 0 0 15px 20px;
 	display: block;
 }
 
-#nav li{
+#nav li,
+#mobile-nav li{
 	display: block;
 	list-style: none;
 	margin: 0;
@@ -111,11 +115,13 @@ column-gap: 20px;
 	line-height: 24px;
 }
 
-#nav li.active a{
+#nav li.active a,
+#mobile-nav li.active a{
 	border-bottom: 1px solid #666;
 }
 
-#nav li a{
+#nav li a, 
+#mobile-nav li a {
 	-webkit-transition: all 1s;
 	-moz-transition: all 1s;
 	-ms-transition: all 1s;
@@ -127,7 +133,16 @@ column-gap: 20px;
 	width: 50px;
 	display: inline-block;
 }
-
+#mobile-nav {
+	display: flex;
+	flex-direction: column;
+	column-gap: 20px;
+	position: absolute;
+	width: 100%;
+	top: 150px;
+	left: 0;
+	background-color: #EDEDED;
+}
 #control{
 	position: absolute;
 	top: 26px;
