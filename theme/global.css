@@ -506,7 +506,7 @@ margin-bottom: 7px;
 .slide{
  width: 100%;
  padding-top: 0 !important;
- background-color: white;
+ background-color: #EDEDED;
 }
 
 #comments{
@@ -692,8 +692,9 @@ transition: all 0.5s;
 	box-sizing: border-box;
 	padding: 0 2rem;
 	text-align: center;
-	display: none;
+	display: flex;
 	pointer-events: none;
+	transition: all 0.3s ease;
 }
 .title p::before{
 	content: '';
@@ -708,7 +709,7 @@ transition: all 0.5s;
 	opacity: 0.3;
 }
 .slide:hover .title {
-	display: flex;
+	opacity: 1;
 }
 .prev a{
 padding: 30px 0 30px 120px;
