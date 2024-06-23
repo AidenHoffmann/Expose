@@ -502,6 +502,7 @@ clear: both;
 overflow: hidden;
 position: relative;
 margin-bottom: 7px;
+display: flex;
 }
 .slide{
  width: 100%;
@@ -694,19 +695,11 @@ transition: all 0.5s;
 	text-align: center;
 	display: none;
 }
-.title p::before{
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: black;
-	z-index: -1;
-	opacity: 0.3;
-}
 .slide:hover .title {
 	display: flex;
+}
+.slide:hover {
+	filter: brightness(0.6);
 }
 .prev a{
 padding: 30px 0 30px 120px;
