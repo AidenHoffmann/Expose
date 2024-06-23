@@ -635,6 +635,10 @@ min-width: 1px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px); 
 }
+
+.gutter-sizer {
+	width: 7px;
+}
 .slide img {
 	cursor: pointer;
 }
