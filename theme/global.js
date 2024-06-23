@@ -69,10 +69,14 @@ $(document).ready(function(){
 	// set slide heights to prevent reflow
 	$('.slide').each(function(){
 		// set image url, remove for dynamic loading
+		if(parseInt($(this).data('imagewidth')) < current_resolution){
+			set_res = parseInt($(this).data('imagewidth'));
+		}
 		var img = $(this).find('img.image');
+		var url = resourcepath + img.data('url');
 		img.prop('src',url+'/'+set_res+'.jpg').removeClass('blank');
 
-		
+
 		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%');
 		const desc = $(this).find('p').text();
 		$(this).find('img').click(function() {
