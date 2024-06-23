@@ -68,6 +68,11 @@ $(document).ready(function(){
 	const text = document.getElementById('text');
 	// set slide heights to prevent reflow
 	$('.slide').each(function(){
+		// set image url, remove for dynamic loading
+		var img = $(this).find('img.image');
+		img.prop('src',url+'/'+set_res+'.jpg').removeClass('blank');
+
+		
 		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%');
 		const desc = $(this).find('p').text();
 		$(this).find('img').click(function() {
@@ -140,7 +145,7 @@ $(document).ready(function(){
 
 	}
 		
-	scrollcheck();
+/* 	scrollcheck(); */
 	
 	// add back hover behavior erased by color changes
 	$('#sidebar a, #share a, #resolution a').not('#nav .active a').mouseenter(function(){
@@ -195,7 +200,7 @@ function scrollcheck(){
 			
 			if(i-index >= -loadprev && i-index<=loadnext){
 				var url = resourcepath + img.data('url');
-				if($(this).data('type') == 'video'){
+ 				if($(this).data('type') == 'video'){
 					if(i-index >= 0 && i-index <= videoloadnext){ // preload next N videos
 						if($(this).find('video').length === 0){
 
@@ -280,8 +285,8 @@ throttle = function(func, wait, options) {
     };
   };
 
-var throttled = throttle(scrollcheck, 700);
-$(window).scroll(throttled);
+/* var throttled = throttle(scrollcheck, 700);
+$(window).scroll(throttled); */
 
 var redrawtext_throttled = throttle(redrawtext, 1000);
 $(window).resize(redrawtext_throttled);
