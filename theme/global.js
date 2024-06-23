@@ -1,5 +1,5 @@
 var loadnext = 10; // preload next 5 slides
-var loadprev = 10; // keep previous 2 slides in case user scrolls up
+var loadprev = 15; // keep previous 2 slides in case user scrolls up
 
 var videoloadnext=2; // preload videos less
 
@@ -280,11 +280,11 @@ throttle = function(func, wait, options) {
     };
   };
 
-/* var throttled = throttle(scrollcheck, 700);
+var throttled = throttle(scrollcheck, 700);
 $(window).scroll(throttled);
 
 var redrawtext_throttled = throttle(redrawtext, 1000);
-$(window).resize(redrawtext_throttled); */
+$(window).resize(redrawtext_throttled);
 
 function findoverlap(elem)
 {
