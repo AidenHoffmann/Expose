@@ -695,6 +695,7 @@ transition: all 0.5s;
 	display: flex;
 	pointer-events: none;
 	transition: all 0.3s ease;
+	opacity: 0;
 }
 .title p::before{
 	content: '';
@@ -860,5 +861,10 @@ min-width: 1px;
 @media (min-width:1024px) {
 	.slide {
 		width: calc((100vw - 338px) / 3);
+	}
+}
+@media (min-width:1800px) {
+	.slide {
+		width: calc((100% - 338px) / 4);
 	}
 }
