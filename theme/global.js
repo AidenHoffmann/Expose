@@ -20,7 +20,7 @@ var video_formats={
 };
 
 
-function drawtext(){
+/* function drawtext(){
 	var screen_width = $(window).width();
 	
 	// set font size based on actual resolution, normalized at 14px/22px for 720
@@ -53,7 +53,7 @@ function redrawtext(){
 	$('.slide .content').show();
 	
 	drawtext();
-}
+} */
 
 function hideImage() {
 	const fullPage = document.getElementById('fullpage');
@@ -90,7 +90,7 @@ $(document).ready(function(){
 	var saved_width = $.cookie('resolution');
 	var screen_width = $(window).width();
 	
-	drawtext();
+/* 	drawtext(); */
 
 	// click away from dialog
 	$('body').click(function(e) {
@@ -140,7 +140,7 @@ $(document).ready(function(){
 
 	}
 		
-	scrollcheck();
+/* 	scrollcheck(); */
 	
 	// add back hover behavior erased by color changes
 	$('#sidebar a, #share a, #resolution a').not('#nav .active a').mouseenter(function(){
@@ -324,11 +324,11 @@ throttle = function(func, wait, options) {
     };
   };
 
-var throttled = throttle(scrollcheck, 700);
+/* var throttled = throttle(scrollcheck, 700);
 $(window).scroll(throttled);
 
 var redrawtext_throttled = throttle(redrawtext, 1000);
-$(window).resize(redrawtext_throttled);
+$(window).resize(redrawtext_throttled); */
 
 function findoverlap(elem)
 {
