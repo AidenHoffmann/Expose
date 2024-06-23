@@ -89,7 +89,7 @@ $(document).ready(function(){
 
 	// checks the value of aria expanded on the cs-ul and changes it accordingly whether it is expanded or not 
 	function ariaExpanded() {
-		const csUL = document.querySelector('#cs-expanded');
+		const csUL = document.querySelector('#mobile-nav');
 		const csExpanded = csUL.getAttribute('aria-expanded');
 
 		if (csExpanded === 'false') {
