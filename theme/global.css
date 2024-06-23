@@ -385,7 +385,7 @@ position: relative;
 margin-bottom: 7px;
 }
 .slide{
- width: 30%;
+ width: calc(100% / 3)
 }
 
 #comments{
