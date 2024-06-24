@@ -13,7 +13,6 @@ fi
 site_title=${site_title:-"Abby Hoffmann Portfolio"}
 
 theme_dir=${theme_dir:-"theme"}
-watermark="$topdir/images/watermark.png"
 
 # widths to scale images to (heights are calculated from source images)
 # you might want to change this for example, if your images aren't full screen on the browser side
@@ -27,7 +26,7 @@ autorotate=${autorotate:-true}
 
 # formats to encode to, list in order of preference. Available formats are vp9, vp8, h264, h265, ogv
 video_formats=(h264 vp8)
-watermark="$topdir/images/watermark.png"
+watermark=${topdir/images/watermark.png}
 
 # video quality - target bitrates in MBit/s matched to each resolution
 # feel free to ignore this if you don't have any videos.
