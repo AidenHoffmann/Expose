@@ -381,13 +381,6 @@ do
 		then
 			image="$file"
 
-
-
-			temp_image="$scratchdir/temp_resized.jpg"
-			convert "$image" -resize 200x200 "$temp_image"
-			image="$temp_image"	
-
-
 		fi
 				
 		if [ "$extract_colors" = true ]
