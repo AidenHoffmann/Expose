@@ -688,7 +688,6 @@ transition: all 0.5s;
 	justify-content: center;
 	align-items: center;
 	z-index: 2;
-	font-weight: 400;
 	box-sizing: border-box;
 	padding: 0 2rem;
 	text-align: center;
@@ -697,7 +696,10 @@ transition: all 0.5s;
 	transition: all 0.3s ease;
 	opacity: 0;
 }
-.title p::before{
+.title h3 {
+	font-weight: 400;
+}
+.title h3::before{
 	content: '';
 	pointer-events: none;
 	position: absolute;
@@ -815,6 +817,16 @@ min-width: 1px;
 	color: black;
 	max-width: 1100px;
 	box-sizing: border-box;
+  }
+  #img-title {
+	display: none;
+	width: 80%;
+	padding: 2rem 5% 0;
+	margin: 0 auto -2rem;
+	max-width: 1100px;
+	box-sizing: border-box;
+	background-color: white;
+	color: black;
   }
 @media (min-width:600px) {
 	.slide {

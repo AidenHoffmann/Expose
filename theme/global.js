@@ -102,6 +102,7 @@ $(document).ready(function(){
 	const fullPage = document.getElementById('fullpage');
 	const image = document.getElementById('image');
 	const text = document.getElementById('text');
+	const title = document.getElementById('img-title');
 	resourcepath = $('body').data('respath');
 	// set slide heights to prevent reflow
 	$('.slide').each(function(){
@@ -117,9 +118,16 @@ $(document).ready(function(){
 		
 		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%');
 		const desc = $(this).find('p').text();
+		const imgtitle = $(this).find('h3').text();
 		$(this).find('img').click(function() {
 			image.src = $(this).attr('src');
 			fullPage.classList.add("active")
+			if (imgtitle) {
+				title.textContent = imgtitle;
+				title.style.display = 'block';
+			} else {
+				title.style.display = 'none';
+			}			
 			if (desc) {
 				text.textContent = desc;
 				text.style.display = 'block';
