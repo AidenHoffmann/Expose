@@ -380,7 +380,12 @@ do
 		then
 			image="$file"
 
-			convert "$image" -resize 50% "$image"
+
+
+			temp_image="$scratchdir/temp_resized.jpg"
+			convert "$image" -resize 50% "$temp_image"
+			image="$temp_image"
+
 			
 		fi
 				
