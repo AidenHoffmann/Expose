@@ -13,7 +13,7 @@ fi
 site_title=${site_title:-"Abby Hoffmann Portfolio"}
 
 theme_dir=${theme_dir:-"theme"}
-watermark="$topdir"/images/watermark.png
+watermark="$topdir/images/watermark.png"
 
 # widths to scale images to (heights are calculated from source images)
 # you might want to change this for example, if your images aren't full screen on the browser side
