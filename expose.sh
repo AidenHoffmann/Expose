@@ -379,6 +379,15 @@ do
 		elif [ "$format" != "sequence" ]
 		then
 			image="$file"
+
+
+
+			temp_image="$scratchdir/temp_resized.jpg"
+			convert "$image" -resize 200x200 "$temp_image"
+			image="$temp_image"
+
+
+			
 		fi
 				
 		if [ "$extract_colors" = true ]
@@ -733,7 +742,6 @@ do
 	if [ "${gallery_type[i]}" = 0 ]
 	then		
 		image="${gallery_files[i]}"
-		image=$(convert "$image" -resize 200x200)
 	else
 		filepath="${gallery_files[i]}"
 		
