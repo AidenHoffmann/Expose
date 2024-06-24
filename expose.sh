@@ -383,7 +383,7 @@ do
 
 
 			temp_image="$scratchdir/temp_resized.jpg"
-			convert "$image" "$topdir/images/watermark.png" -gravity south -composite "$temp_image"
+			convert "$image" -gravity south -composite "$temp_image"
 			image="$temp_image"
 
 
