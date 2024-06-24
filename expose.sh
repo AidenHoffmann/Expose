@@ -26,6 +26,7 @@ autorotate=${autorotate:-true}
 
 # formats to encode to, list in order of preference. Available formats are vp9, vp8, h264, h265, ogv
 video_formats=(h264 vp8)
+watermark="$topdir/images/watermark.png"
 
 # video quality - target bitrates in MBit/s matched to each resolution
 # feel free to ignore this if you don't have any videos.
@@ -334,6 +335,7 @@ do
 		then
 			format="sequence"
 			image=$(find "$file" -maxdepth 1 ! -path "$file" -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.png" | sort | head -n 1)
+			convert "$image" "$watermark" -gravity SouthEast -geometry +50+50 -composite "$image"
 		else
 			extension=$(echo "${filename##*.}" | tr '[:upper:]' '[:lower:]')
 		
