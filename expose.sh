@@ -329,7 +329,6 @@ do
 		fi
 		
 		image_url=$(echo "$trimmed" | sed 's/[^ a-zA-Z0-9]//g;s/ /-/g' | tr '[:upper:]' '[:lower:]')
-		convert $file 
 		
 		if [ -d "$file" ] && [ $(echo "$filename" | grep "$sequence_keyword" | wc -l) -gt 0 ]
 		then
@@ -380,7 +379,6 @@ do
 		elif [ "$format" != "sequence" ]
 		then
 			image="$file"
-
 		fi
 				
 		if [ "$extract_colors" = true ]
@@ -919,6 +917,7 @@ do
 	
 	# generate static images for each resolution
 	width=$(identify -format "%w" "$image")
+	
 	options=""
 	if [ ! -z "${gallery_image_options[i]}" ]
 	then
