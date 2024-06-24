@@ -379,7 +379,6 @@ do
 		elif [ "$format" != "sequence" ]
 		then
 			image="$file"
-			#image=$(convert "$file" -resize 200x200)
 		fi
 				
 		if [ "$extract_colors" = true ]
@@ -734,6 +733,7 @@ do
 	if [ "${gallery_type[i]}" = 0 ]
 	then		
 		image="${gallery_files[i]}"
+		image=$(convert "$image" -resize 200x200)
 	else
 		filepath="${gallery_files[i]}"
 		
@@ -918,7 +918,6 @@ do
 	
 	# generate static images for each resolution
 	width=$(identify -format "%w" "$image")
-	
 	options=""
 	if [ ! -z "${gallery_image_options[i]}" ]
 	then
