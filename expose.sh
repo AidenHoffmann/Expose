@@ -379,7 +379,8 @@ do
 		elif [ "$format" != "sequence" ]
 		then
 			image="$file"
-			image=$(convert "$image" -resize 50% "$temp_image")			
+
+			image=$(convert "$image" -resize 200x200)			
 		fi
 				
 		if [ "$extract_colors" = true ]
