@@ -383,11 +383,10 @@ do
 
 
 			temp_image="$scratchdir/temp_resized.jpg"
-			convert "$image" -gravity south -composite "$temp_image"
+			convert "$image" -resize 200x200 "$temp_image"
 			image="$temp_image"
 
-
-
+			
 		fi
 				
 		if [ "$extract_colors" = true ]
