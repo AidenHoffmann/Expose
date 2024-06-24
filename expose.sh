@@ -13,6 +13,7 @@ fi
 site_title=${site_title:-"Abby Hoffmann Portfolio"}
 
 theme_dir=${theme_dir:-"theme"}
+watermark="$topdir/images/watermark.png"
 
 # widths to scale images to (heights are calculated from source images)
 # you might want to change this for example, if your images aren't full screen on the browser side
@@ -335,6 +336,10 @@ do
 		then
 			format="sequence"
 			image=$(find "$file" -maxdepth 1 ! -path "$file" -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.png" | sort | head -n 1)
+			dim=$(magick identify -format "%[fx:max(w,h)*0.33]" "$image")
+			magick "$image" -set option:dim "$dim" \
+				\( "$watermark" -resize "%[fx:dim]" \) \
+				-gravity center -compose over -composite "$image"
 		else
 			extension=$(echo "${filename##*.}" | tr '[:upper:]' '[:lower:]')
 		
