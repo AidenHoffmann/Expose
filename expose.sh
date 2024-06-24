@@ -335,7 +335,6 @@ do
 		then
 			format="sequence"
 			image=$(find "$file" -maxdepth 1 ! -path "$file" -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.png" | sort | head -n 1)
-			convert "$image" "$watermark" -gravity SouthEast -geometry +50+50 -composite "$image"
 		else
 			extension=$(echo "${filename##*.}" | tr '[:upper:]' '[:lower:]')
 		
