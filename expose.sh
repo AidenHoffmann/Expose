@@ -380,8 +380,8 @@ do
 		then
 			image="$file"
 
-			morgify -resize 200x200 "$image"
-
+			convert "$image" -resize 50% "$image"
+			
 		fi
 				
 		if [ "$extract_colors" = true ]
