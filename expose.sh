@@ -334,7 +334,7 @@ do
 		then
 			format="sequence"
 			image=$(find "$file" -maxdepth 1 ! -path "$file" -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.gif" -o -iname "*.png" | sort | head -n 1)
-			image=$(convert "$image" -resize 200x200 "$image")
+			image=$(convert "$image" -resize 200x200)
 		else
 			extension=$(echo "${filename##*.}" | tr '[:upper:]' '[:lower:]')
 		
@@ -379,8 +379,8 @@ do
 						
 		elif [ "$format" != "sequence" ]
 		then
-			image="$file"
-			image=$(convert "$image" -resize 200x200 "$image")
+			#image="$file"
+			image=$(convert "$file" -resize 200x200)
 		fi
 				
 		if [ "$extract_colors" = true ]
