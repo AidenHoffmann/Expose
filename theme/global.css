@@ -881,3 +881,11 @@ min-width: 1px;
 		width: calc((100% - 328px) / 4);
 	}
 }
+@media (max-height: 550px) and (max-width: 768px) {
+	#sidebar {
+		position: relative;
+	}
+	#main {
+		padding-top: 7px;
+	}
+}
