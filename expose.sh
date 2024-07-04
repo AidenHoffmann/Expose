@@ -10,9 +10,9 @@ if [ -f "$topdir/_config.sh" ]; then
   . "$topdir/_config.sh"
 fi
 
-site_title=${site_title:-"My Awesome Photos"}
+site_title=${site_title:-"Abby Hoffmann Portfolio"}
 
-theme_dir=${theme_dir:-"theme1"}
+theme_dir=${theme_dir:-"theme"}
 
 # widths to scale images to (heights are calculated from source images)
 # you might want to change this for example, if your images aren't full screen on the browser side
@@ -38,7 +38,7 @@ bitrate_maxratio=${bitrate_maxratio:-2} # a multiple of target bitrate to get ma
 disable_audio=${disable_audio:-true}
 
 # extract a representative palette for each photo/video and use those colors for background/text/accent etc
-extract_colors=${extract_colors:-true}
+extract_colors=${extract_colors:-false}
 
 backgroundcolor=${backgroundcolor:-"#000000"} # slide background, visible only before image has loaded
 textcolor=${textcolor:-"#ffffff"} # default text color

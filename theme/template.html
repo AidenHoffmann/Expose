@@ -1,0 +1,66 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/> 
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Abby Hoffmann Photography</title>
+		
+		<!--Swap our for actual link-->
+		<meta name="description" content="Explore the stunning photography of Abby Hoffmann, a wildlife-based photographer. Compiled here is a collection of her best works.">
+
+		<!--Favicons-->
+		<link rel="icon" type="image/png" sizes="32x32" href="img/photo-camera (1).png">
+		<link rel="icon" type="image/png" sizes="16x16" href="img/photo-camera.png">
+
+		<link type="text/css" rel="stylesheet" media="all" href="{{basepath}}global.css" rel="preload"/>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="{{basepath}}json.js"></script>
+		<script src="{{basepath}}cookie.js"></script>
+		<script src="{{basepath}}global.js"></script>
+
+		<script async src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+		<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	</head>
+<body data-resolution="{{resolution}}" data-respath="{{resourcepath}}">
+	<div id="fullpage" onclick="hideImage()">
+		<div class="background"></div>
+		<div class="wrapper">
+			<img src="" alt="" id="image">
+			<h3 id="img-title"></h3>
+			<p id="text"></p>
+		</div>
+	</div>
+	<div id="sidebar">
+		<div class="foreground" id="navigation">
+			<h1>Abby Hoffmann</h1>
+			<h2>PHOTOGRAPHY</h2>
+			<ul id="nav">
+				{{navigation}}			 
+			</ul>
+			<ul id="mobile-nav" aria-expanded="false">
+				{{navigation}}			 
+			</ul>
+			<ul id="control">
+				<li><a href="https://www.instagram.com" id="social-link"><i class='bx bxl-instagram' style='color:#ffffff'  ></i></a></li>
+				<button class="cs-toggle" aria-label="mobile menu toggle">
+					<div class="cs-box" aria-hidden="true">
+						<span class="cs-line cs-line1" aria-hidden="true"></span>
+						<span class="cs-line cs-line2" aria-hidden="true"></span>
+						<span class="cs-line cs-line3" aria-hidden="true"></span>
+					</div>
+				</button>
+				</ul>
+		</div>
+	</div>
+	
+	<div id="main" data-masonry='{ "itemSelector": ".slide", "columnWidth": ".slide", "gutter": ".gutter-sizer"}'>
+		<div class="gutter-sizer"></div>
+		{{content}}
+	</div>
+</body>
+</html>
