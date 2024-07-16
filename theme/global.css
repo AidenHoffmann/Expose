@@ -821,8 +821,8 @@ min-width: 1px;
   #img-title {
 	display: none;
 	width: 80%;
-	padding: 2rem 5% 0;
-	margin: 0 auto -1rem;
+	padding: 2rem 5%;
+	margin: 0 auto -2rem;
 	max-width: 1100px;
 	z-index: 1;
 	box-sizing: border-box;
