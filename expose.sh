@@ -573,7 +573,22 @@ do
 		done < <(echo "$metadata")
 		
 		# set image parameters
+
+		imagewidth="${gallery_maxwidth[gallery_index]}"
+		url="${gallery_url[gallery_index]}"
+		if [ "$imagewidth" -lt "$current_resolution" ]; then
+		set_res="$imagewidth"
+		else
+		set_res="$current_resolution"
+		fi
+
+		# Construct the final image URL
+		final_url="${url}/${set_res}.jpg"
+
+
+
 		post=$(template "$post" imageurl "${gallery_url[gallery_index]}")
+		post=$(template "$post" finalurl "$final_url")
 		post=$(template "$post" imagewidth "${gallery_maxwidth[gallery_index]}")
 		
 		post=$(template "$post" imageheight "${gallery_maxheight[gallery_index]}")

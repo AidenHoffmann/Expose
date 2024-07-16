@@ -66,39 +66,6 @@ function hideImage() {
 
 $(document).ready(function(){
 
-	//mobile nav
-	const CSnavbarMenu = document.querySelector("#mobile-nav");
-	const CShamburgerMenu = document.querySelector(".cs-toggle");
-
-	CShamburgerMenu.addEventListener('click', function() {
-		CShamburgerMenu.classList.toggle("cs-active");
-		CSnavbarMenu.classList.toggle("cs-active");
-		// run the function to check the aria-expanded value
-		ariaExpanded();
-	});
-
-	document.addEventListener("scroll", function() {          
-		if (window.scrollY > 400) {
-		// Remove the cs-active class from CSnavbarMenu and CShamburgerMenu
-		CSnavbarMenu.classList.remove("cs-active");
-		CShamburgerMenu.classList.remove("cs-active");
-	
-		ariaExpanded
-		}
-	});
-
-	// checks the value of aria expanded on the cs-ul and changes it accordingly whether it is expanded or not 
-	function ariaExpanded() {
-		const csUL = document.querySelector('#mobile-nav');
-		const csExpanded = csUL.getAttribute('aria-expanded');
-
-		if (csExpanded === 'false') {
-			csUL.setAttribute('aria-expanded', 'true');
-		} else {
-			csUL.setAttribute('aria-expanded', 'false');
-		}
-	}
-
 	const fullPage = document.getElementById('fullpage');
 	const image = document.getElementById('image');
 	const text = document.getElementById('text');
@@ -137,6 +104,39 @@ $(document).ready(function(){
 			}			
 		})
 	});
+
+	//mobile nav
+	const CSnavbarMenu = document.querySelector("#mobile-nav");
+	const CShamburgerMenu = document.querySelector(".cs-toggle");
+
+	CShamburgerMenu.addEventListener('click', function() {
+		CShamburgerMenu.classList.toggle("cs-active");
+		CSnavbarMenu.classList.toggle("cs-active");
+		// run the function to check the aria-expanded value
+		ariaExpanded();
+	});
+
+	document.addEventListener("scroll", function() {          
+		if (window.scrollY > 400) {
+		// Remove the cs-active class from CSnavbarMenu and CShamburgerMenu
+		CSnavbarMenu.classList.remove("cs-active");
+		CShamburgerMenu.classList.remove("cs-active");
+	
+		ariaExpanded
+		}
+	});
+
+	// checks the value of aria expanded on the cs-ul and changes it accordingly whether it is expanded or not 
+	function ariaExpanded() {
+		const csUL = document.querySelector('#mobile-nav');
+		const csExpanded = csUL.getAttribute('aria-expanded');
+
+		if (csExpanded === 'false') {
+			csUL.setAttribute('aria-expanded', 'true');
+		} else {
+			csUL.setAttribute('aria-expanded', 'false');
+		}
+	}
 	
 	
 	// detect resolution
