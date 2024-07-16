@@ -75,13 +75,13 @@ $(document).ready(function(){
 	$('.slide').each(function(){
 		// set image url, remove for dynamic loading
 		
-  		var set_res = current_resolution;
+/*   		var set_res = current_resolution;
 		if(parseInt($(this).data('imagewidth')) < current_resolution){
 			set_res = parseInt($(this).data('imagewidth'));
 		}
 		var img = $(this).find('img.image');
 		var url = resourcepath + img.data('url');
-		img.prop('src',url+'/'+set_res+'.jpg');
+		img.prop('src',url+'/'+set_res+'.jpg'); */
 
 		
 /* 		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%'); */
