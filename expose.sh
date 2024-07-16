@@ -589,7 +589,7 @@ do
 
 
 		post=$(template "$post" imageurl "${gallery_url[gallery_index]}")
-		post=$(template "$post" imageurl "${gallery_path[gallery_index]}")
+		post=$(template "$post" finalurl "${gallery_path[gallery_index]}")
 #		post=$(template "$post" finalurl "$final_url ")
 		post=$(template "$post" imagewidth "${gallery_maxwidth[gallery_index]}")
 		
