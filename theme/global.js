@@ -108,16 +108,16 @@ $(document).ready(function(){
 	$('.slide').each(function(){
 		// set image url, remove for dynamic loading
 		
- 		var set_res = current_resolution;
+/*  		var set_res = current_resolution;
 		if(parseInt($(this).data('imagewidth')) < current_resolution){
 			set_res = parseInt($(this).data('imagewidth'));
 		}
 		var img = $(this).find('img.image');
 		var url = resourcepath + img.data('url');
-		img.prop('src',url+'/'+set_res+'.jpg').removeClass('blank');
+		img.prop('src',url+'/'+set_res+'.jpg'); */
 
 		
-		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%');
+/* 		$(this).css('padding-top', (100*$(this).data('imageheight')/$(this).data('imagewidth')) + '%'); */
 		const desc = $(this).find('p').text();
 		const imgtitle = $(this).find('h3').text();
 		$(this).find('img').click(function() {
