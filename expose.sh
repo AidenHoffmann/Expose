@@ -441,7 +441,11 @@ do
 		gallery_maxwidth+=("$maxwidth")
 		gallery_maxheight+=("$maxheight")
 		gallery_colors+=("$palette")
-		gallery_path+=("$filepath")
+
+		relative_path="${filepath#*/images/}"
+		final_path="${relative_path// /-}"
+		gallery_path+=("$final_path")
+	
 	done < <(find "$dir" -maxdepth 1 ! -path "$dir" ! -path "$dir*/_*" | sort)
 	
 	nav_count[i]="$index"
