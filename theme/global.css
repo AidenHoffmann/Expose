@@ -535,19 +535,6 @@ transition: opacity 0.5s ease-in;
 opacity: 1;
 }
 
-.bar{
-position: absolute;
-top: 0;
-left: 0;
-height: 100%;
-background-color: #ddd;
--webkit-transition: width 0.5s ease-in;
--moz-transition: width 0.5s ease-in;
--ms-transition: width 0.5s ease-in;
--o-transition: width 0.5s ease-in;
-transition: width 0.5s ease-in;
-}
-
 .post{
 	display: none;
 }
