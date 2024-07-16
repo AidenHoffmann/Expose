@@ -441,6 +441,7 @@ do
 		gallery_maxwidth+=("$maxwidth")
 		gallery_maxheight+=("$maxheight")
 		gallery_colors+=("$palette")
+		gallery_path+=("$filepath")
 	done < <(find "$dir" -maxdepth 1 ! -path "$dir" ! -path "$dir*/_*" | sort)
 	
 	nav_count[i]="$index"
@@ -583,12 +584,13 @@ do
 		fi
 
 		# Construct the final image URL
-		final_url="${url}/${set_res}.jpg"
+		final_url="${topdir}/images/${url}/${set_res}.jpg"
 
 
 
 		post=$(template "$post" imageurl "${gallery_url[gallery_index]}")
-		post=$(template "$post" finalurl "$final_url")
+		post=$(template "$post" imageurl "${gallery_path[gallery_index]}")
+#		post=$(template "$post" finalurl "$final_url ")
 		post=$(template "$post" imagewidth "${gallery_maxwidth[gallery_index]}")
 		
 		post=$(template "$post" imageheight "${gallery_maxheight[gallery_index]}")
