@@ -443,7 +443,11 @@ do
 		gallery_colors+=("$palette")
 
 		relative_path="${filepath#*/images/}"
-		final_path="${relative_path// /-}"
+		relative_path="${relative_path// /-}"
+		directory="${relative_path%.*}"
+    	extension="${relative_path##*.}"
+		
+		final_path="https://abbyhoffmann-photography.netlify.app/${directory}/1920.${extension}"
 		gallery_path+=("$final_path")
 	
 	done < <(find "$dir" -maxdepth 1 ! -path "$dir" ! -path "$dir*/_*" | sort)
@@ -579,16 +583,7 @@ do
 		
 		# set image parameters
 
-		imagewidth="${gallery_maxwidth[gallery_index]}"
-		url="${gallery_url[gallery_index]}"
-		if [ "$imagewidth" -lt "$current_resolution" ]; then
-		set_res="$imagewidth"
-		else
-		set_res="$current_resolution"
-		fi
 
-		# Construct the final image URL
-		final_url="${topdir}/images/${url}/${set_res}.jpg"
 
 
 
