@@ -447,7 +447,13 @@ do
 		directory="${relative_path%.*}"
     	extension="${relative_path##*.}"
 		
-		final_path="https://abbyhoffmann-photography.netlify.app/${directory}/1920.${extension}"
+		res=1920
+		if [ "$maxwidth" -lt "$res" ]; then
+			res="$maxwidth"
+		fi
+
+
+		final_path="https://abbyhoffmann-photography.netlify.app/${directory}/${res}.${extension}"
 		gallery_path+=("$final_path")
 	
 	done < <(find "$dir" -maxdepth 1 ! -path "$dir" ! -path "$dir*/_*" | sort)
