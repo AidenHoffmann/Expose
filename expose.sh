@@ -445,8 +445,11 @@ do
 
 		relative_path="${filepath#*/images/}"
 		relative_path="${relative_path// /-}"
-		directory=$(echo "${relative_path%.*}" | sed 's/[^ a-zA-Z0-9]//g;s/ /-/g' | tr '[:upper:]' '[:lower:]')
+		directory=$(echo "${relative_path%.*}" | sed 's/[^ a-zA-Z0-9\/]//g;s/ /-/g' | tr '[:upper:]' '[:lower:]')
     	extension="${relative_path##*.}"
+		if [ "$extension" = "jpeg" ]; then
+			extension="jpg"
+		fi
 		
 		res=1920
 		if [ "$maxwidth" -lt "$res" ]; then
