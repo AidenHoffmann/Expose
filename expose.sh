@@ -16,7 +16,8 @@ theme_dir=${theme_dir:-"theme"}
 
 # widths to scale images to (heights are calculated from source images)
 # you might want to change this for example, if your images aren't full screen on the browser side
-resolution=(3840 2560 1920 1280 1024 640)
+resolution=(1920 640)
+# this was the default: (3840 2560 1920 1280 1024 640)
 
 # jpeg compression quality for static photos
 jpeg_quality=${jpeg_quality:-92}
@@ -444,7 +445,7 @@ do
 
 		relative_path="${filepath#*/images/}"
 		relative_path="${relative_path// /-}"
-		directory="${relative_path%.*}"
+		directory=$(echo "${relative_path%.*}" | sed -e 's/^[[:space:]0-9]*//;s/[[:space:]]*$//;s/[^ a-zA-Z0-9]//g;s/ /-/g' | tr '[:upper:]' '[:lower:]')
     	extension="${relative_path##*.}"
 		
 		res=1920
