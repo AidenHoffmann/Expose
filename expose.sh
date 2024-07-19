@@ -445,7 +445,11 @@ do
 
 		relative_path="${filepath#*/images/}"
 		relative_path="${relative_path// /-}"
-		directory=$(echo "${relative_path%.*}" | sed 's/[^ a-zA-Z0-9\/]//g;s/ /-/g' | tr '[:upper:]' '[:lower:]')
+		directory="${relative_path%.*}"
+
+		base_path="${directory%/*}/"
+		filename=$(echo "${directory##*/}" | sed 's/[^ a-zA-Z0-9\/]//g;s/ /-/g' | tr '[:upper:]' '[:lower:]')
+
     	extension="${relative_path##*.}"
 		if [ "$extension" = "jpeg" ]; then
 			extension="jpg"
@@ -456,7 +460,7 @@ do
 			res="$maxwidth"
 		fi
 
-		final_path="https://abbyhoffmann-photography.netlify.app/${directory}/${res}.${extension}"
+		final_path="https://abbyhoffmann-photography.netlify.app/${base_path}${filename}/${res}.${extension}"
 		gallery_path+=("$final_path")
 	
 	done < <(find "$dir" -maxdepth 1 ! -path "$dir" ! -path "$dir*/_*" | sort)
