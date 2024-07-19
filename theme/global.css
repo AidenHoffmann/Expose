@@ -652,6 +652,7 @@ transition: all 0.5s;
 	top: 0;
 	left: 0;
 	width: 100%;
+	pointer-events: none;
 	height: 100%;
 }
 
@@ -663,8 +664,7 @@ transition: all 0.5s;
 		box-sizing: border-box;
 		padding: 0 2rem;
 		text-align: center;
-		display: flex;
-		pointer-events: none;
+		display: flex;		
 		transition: all 0.3s ease;
 	}
 	.title h3 {
