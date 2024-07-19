@@ -445,7 +445,7 @@ do
 
 		relative_path="${filepath#*/images/}"
 		relative_path="${relative_path// /-}"
-		directory=$(echo "${relative_path%.*}" | sed -e 's/^[[:space:]0-9]*//;s/[[:space:]]*$//;s/[^ a-zA-Z0-9]//g;s/ /-/g' | tr '[:upper:]' '[:lower:]')
+		directory=$(echo "${relative_path%.*}" | sed -e 's/^[[:space:]0-9]*//;s/[[:space:]]*$//;s/[^ a-zA-Z0-9\/]//g;s/ /-/g' | tr '[:upper:]' '[:lower:]')
     	extension="${relative_path##*.}"
 		
 		res=1920
