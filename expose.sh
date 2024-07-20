@@ -958,6 +958,15 @@ do
 		options="" # don't apply image options to a video
 	fi
 	
+	highest_res=${resolution[0]}  # Assuming the array is sorted in descending order
+
+	# Check if the width is less than the highest resolution
+	if [ "$width" -lt "$highest_res" ]; then
+		if [ ! -e "$topdir/_site/$url/$width.jpg" ]; then
+			convert $autorotateoption -size "$width"x"$width" "$image" -resize "$width"x"$width" -quality "$jpeg_quality" +profile '*' $options "$topdir/_site/$url/$width.jpg"
+		fi
+	fi
+
 	count=0
 	
 	for res in "${resolution[@]}"
