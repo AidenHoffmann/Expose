@@ -449,18 +449,13 @@ do
 
 		base_path="${directory%/*}/"
 		filename=$(echo "${directory##*/}" | sed 's/[^ a-zA-Z0-9\/]//g;s/ /-/g' | tr '[:upper:]' '[:lower:]')
-
-    	extension="${relative_path##*.}"
-		if [ "$extension" = "jpeg" ]; then
-			extension="jpg"
-		fi
 		
 		res=1920
 		if [ "$width" -lt "$res" ]; then
 			res="$width"
 		fi
 
-		final_path="https://abbyhoffmann-photography.netlify.app/${base_path}${filename}/${res}.${extension}"
+		final_path="https://abbyhoffmann-photography.netlify.app/${base_path}${filename}/${res}.webp"
 		gallery_path+=("$final_path")
 	
 	done < <(find "$dir" -maxdepth 1 ! -path "$dir" ! -path "$dir*/_*" | sort)
@@ -962,8 +957,8 @@ do
 
 	# Check if the width is less than the highest resolution
 	if [ "$width" -lt "$highest_res" ]; then
-		if [ ! -e "$topdir/_site/$url/$width.jpg" ]; then
-			convert $autorotateoption -size "$width"x"$width" "$image" -resize "$width"x"$width" -quality "$jpeg_quality" +profile '*' $options "$topdir/_site/$url/$width.jpg"
+		if [ ! -e "$topdir/_site/$url/$width.webp" ]; then
+			convert $autorotateoption -size "$width"x"$width" "$image" -resize "$width"x"$width" -quality "$jpeg_quality" +profile '*' $options "$topdir/_site/$url/$width.webp"
 		fi
 	fi
 
@@ -972,12 +967,12 @@ do
 	for res in "${resolution[@]}"
 	do
 		((count++))
-		[ -e "$topdir/_site/$url/$res.jpg" ] && continue
+		[ -e "$topdir/_site/$url/$res.webp" ] && continue
 		
 		# only downscale original image
 		if [ "$width" -ge "$res" ] || [ "$count" -eq "${#resolution[@]}" ]
 		then
-			convert $autorotateoption -size "$res"x"$res" "$image" -resize "$res"x"$res" -quality "$jpeg_quality" +profile '*' $options "$topdir/_site/$url/$res.jpg"
+			convert $autorotateoption -size "$res"x"$res" "$image" -resize "$res"x"$res" -quality "$jpeg_quality" +profile '*' $options "$topdir/_site/$url/$res.webp"
 		fi
 	done
 	
