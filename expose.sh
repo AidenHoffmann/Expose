@@ -456,8 +456,8 @@ do
 		fi
 		
 		res=1920
-		if [ "$maxwidth" -lt "$res" ]; then
-			res="$maxwidth"
+		if [ "$width" -lt "$res" ]; then
+			res="$width"
 		fi
 
 		final_path="https://abbyhoffmann-photography.netlify.app/${base_path}${filename}/${res}.${extension}"
