@@ -329,7 +329,7 @@ do
 			trimmed=$(echo "${filename%.*}")
 		fi
 		
-		image_url=$(echo "$trimmed" | sed 's/[^ a-zA-Z0-9]//g;s/ /-/g' | tr '[:upper:]' '[:lower:]')
+		image_url=$(echo "$trimmed" | sed 's/[^ a-zA-Z0-9]//g;s/ //g' | tr '[:upper:]' '[:lower:]')
 		
 		if [ -d "$file" ] && [ $(echo "$filename" | grep "$sequence_keyword" | wc -l) -gt 0 ]
 		then
