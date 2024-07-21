@@ -448,8 +448,7 @@ do
 		directory="${relative_path%.*}"
 
 		base_path="${directory%/*}/"
-		filename=$(echo "${directory##*/}" | sed 's/[^ a-zA-Z0-9\/]//g;s/ /-/g' | tr '[:upper:]' '[:lower:]')
-		
+		filename=$(echo "${directory##*/}" | sed 's/[^ a-zA-Z0-9\/]//g;s/ //g' | tr '[:upper:]' '[:lower:]')		
 		res=1920
 		if [ "$width" -lt "$res" ]; then
 			res="$width"
@@ -958,7 +957,7 @@ do
 	# Check if the width is less than the highest resolution
 	if [ "$width" -lt "$highest_res" ]; then
 		if [ ! -e "$topdir/_site/$url/$width.webp" ]; then
-			convert $autorotateoption -size "$width"x"$width" "$image" -resize "$width"x"$width" -quality "$jpeg_quality" +profile '*' $options "$topdir/_site/$url/$width.webp"
+			convert $autorotateoption -size "$width"x"$width" "$image" -resize "$width"x"$width" -quality "$jpeg_quality" +profile '*' $options watermark.png -gravity SouthEast -geometry +50+50 -composite  "$topdir/_site/$url/$width.webp"
 		fi
 	fi
 
@@ -972,7 +971,7 @@ do
 		# only downscale original image
 		if [ "$width" -ge "$res" ] || [ "$count" -eq "${#resolution[@]}" ]
 		then
-			convert $autorotateoption -size "$res"x"$res" "$image" -resize "$res"x"$res" -quality "$jpeg_quality" +profile '*' $options "$topdir/_site/$url/$res.webp"
+			convert $autorotateoption -size "$res"x"$res" "$image" -resize "$res"x"$res" -quality "$jpeg_quality" +profile '*' $options watermark.png -gravity SouthEast -geometry +50+50 -composite  "$topdir/_site/$url/$res.webp"
 		fi
 	done
 	
