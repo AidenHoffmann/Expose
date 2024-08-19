@@ -448,7 +448,7 @@ do
 		directory="${relative_path%.*}"
 
 		base_path="${directory%/*}/"
-		filename=$(echo "${directory##*/}" | sed 's/[^ a-zA-Z0-9\/]//g;s/ //g' | tr '[:upper:]' '[:lower:]')		
+		filename=$(echo "${directory##*/}" | sed 's/[^ a-zA-Z0-9\/]//g;s/ //g' | sed 's/^[0-9]*//' | tr '[:upper:]' '[:lower:]')	
 		res=1920
 		if [ "$width" -lt "$res" ]; then
 			res="$width"
